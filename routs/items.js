@@ -4,7 +4,15 @@ const router = express.Router();
 const Item = require("../models/Item");
 // const User = require("../models/User");
 
-router.get("/home", (req, res) => {});
+router.get("/home", async(req, res) => {
+  try {
+    let items = await Item.find({});
+
+    return res.json({ items }).status(200);
+  } catch (error) {
+    return res.json({ message: "no movies" }).status(400);
+  }
+});
 
 router.post("/home/create", (req, res) => {
   const newItem = {
@@ -22,8 +30,7 @@ router.post("/home/create", (req, res) => {
     .save()
     .then(() => {
       console.log("good!");
-      User.findById("5e9c5409a8cc573dee285f98", (err, user) => {
-        // console.log(req.user);
+      User.findById("5e9c7fa60771d12ee4920069", (err, user) => {
         user.items.push(item);
         user.save();
       });

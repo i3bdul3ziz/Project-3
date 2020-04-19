@@ -11,3 +11,18 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.color-nav{
+  background-color: none;
+}
+
+#borderstyle{
+  border: none;
+  border-radius:0;
+}
+
+.fixposition{
+  position: absolute;
+  top: 330px !important;
+  padding: 4.25rem !important;
+}
