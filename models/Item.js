@@ -13,7 +13,7 @@ const itemSchema = new Schema(
     },
 
     time_to_pick: String,
-    isAvailble : true
+    isAvailble : false
   },
 
   { timestamps: true }
