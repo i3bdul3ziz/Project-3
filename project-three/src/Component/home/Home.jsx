@@ -1,7 +1,8 @@
 import React , {useState , useEffect} from 'react'
-import { Container, Row, Col, Card,Button } from "react-bootstrap";
+import { Container, Row, Col, Card,Button} from "react-bootstrap";
 import axios from "axios";
-import '../index.css'
+import '../../index.css'
+import { withRouter, NavLink } from "react-router-dom";
 
 
 const Items = () => {
@@ -41,8 +42,8 @@ const Items = () => {
 
     return (
       <div>
-        {/* <Row className="mt-0">
-            <Col className="mt-0"> */}
+        <Row className="mt-0">
+            <Col className="mt-0"> 
                 {/* <Image
                 className="d-block w-100"
                 src="https://envato-shoebox-0.imgix.net/2103/0ab1-92e8-4b34-a111-2edc23491222/food7_b267.jpg?auto=compress%2Cformat&fit=max&mark=https%3A%2F%2Felements-assets.envato.com%2Fstatic%2Fwatermark2.png&markalign=center%2Cmiddle&markalpha=18&w=800&s=fa73555be8fe405d7e67f33bcfdbc3ef"
@@ -50,21 +51,24 @@ const Items = () => {
                 />
                 <h3>First slide label</h3>
                 <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p> */}
-                {/* <Card className="text-black" id="borderstyle" fluid >
+                <Card className="text-black" id="borderstyle" fluid >
                     <Card.Img id="borderstyle" height={597} src="https://image.freepik.com/free-photo/food-delivery-concept-lunch-container_82893-14596.jpg" alt="Card image" />
                     <Card.ImgOverlay className="fixposition" >
-                        <Card.Title className="text-light">Title</Card.Title>
+                        <Card.Title className="text-light">!Waste</Card.Title>
                         <Card.Text className="text-light">
                         This is a wider card with supporting text below as a natural lead-in to<br/>
                         additional content. This content is a little bit longer.
                         </Card.Text>
-                        <Card.Text><Button variant="primary" >
-                            Create Item
-                        </Button></Card.Text>
+                        <Card.Text><NavLink
+                                to={'/home/create'}
+                                className="btn btn-primary"
+                                >
+                                Create Item
+                        </NavLink></Card.Text>
                     </Card.ImgOverlay>
                 </Card>
             </Col>
-        </Row> */}
+        </Row>
         <Container className="mt-5" fluid>
             <Row className="mt-5 justify-content-center">{items.map(item => 
             <>
