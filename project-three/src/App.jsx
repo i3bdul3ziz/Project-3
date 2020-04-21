@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, Profiler} from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import './App.css'
 import Home from './Component/home/Home.jsx';
@@ -7,9 +7,15 @@ import { Navbar, Nav } from "react-bootstrap";
 import Nave from './Component/navbar/Nav.jsx';
 import { SingUp } from './Component/user/Signup.jsx';
 import { Signin } from './Component/user/Signin.jsx';
+import  Profile  from './Component/user/Profile';
 import { CreateItem } from './Component/home/CreateItem';
 import About from './Component/home/About';
 import jwt_decode from 'jwt-decode'
+import Item, { item } from './Component/item/Item';
+import jwt_decode from 'jwt-decode'
+import storage from "./firebase/firebase"
+
+
 export default class App extends Component {
 
   state = {
@@ -50,17 +56,19 @@ export default class App extends Component {
   
     return (
     <div>
-      <Nave isLogin ={this.state.isLogin} userLogin = {this.userLogin}/>
+      <Nave user={this.state.user} isLogin ={this.state.isLogin} userLogin = {this.userLogin}/>
       
       <Switch>
         <Route exact path="/home" render={()=> <Home />} />
         <Route path="/about" component={About}/>
         <Route path="/home/create" component={CreateItem}/>
+        <Route path="/profile/:id" component={Profile}/>
         <Route path= '/signin' render ={ (props) => <Signin  {...props} userLogin = {this.userLogin}/>} />
         <Route path= '/signup' component ={SingUp} />
+        <Route path= '/home/:id' component ={Item} />
       </Switch>
 
-      <Navbar className="mt-5" bg="dark" variant="light" sticky="bottom">
+      <Navbar className="mt-5" fixed="bottom" bg="dark" variant="light" sticky="bottom">
         <Nav >
         copyrights
         </Nav>

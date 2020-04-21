@@ -56,6 +56,17 @@ router.post("/signin", (req, res) => {
 });
 // console.log("is working");
 
+router.get("/profile/:id", async(req, res ) => {
+     try {
+       let user = await User.findById(req.params.id)
+       res.status(200).json({user})
+     } catch (error) {
+      res.status(400).json({message: "no user found"})
+     }
+     
+
+})
+
 router.put("/profile/:id", (req, res) => {
   let userNew = {
     name : req.body.name,
@@ -71,9 +82,25 @@ router.put("/profile/:id", (req, res) => {
   })
   .then(user => {
     res.json({profile :user });
-  });
+  })
+  .catch(err => {
+  res.status(400).json({messge: "can not update"})
+})
   });
 });
-  
 
+
+// router.post("/update", async (req, res) => {
+//   // console.log(req.user);
+//   let {_id, first_name} = req.body;
+//   try {
+//     let user = await User.findByIdAndUpdate(_id, {"first_name": first_name});
+//     if (!user) throw error; 
+//     let userSaved = await user.save();
+//     res.json({ user: userSaved }).status(200);
+//   } catch (error) {
+//     res.status(400).json({ message: "something went wrong!" });
+//   }
+//   //
+// });
 module.exports = router;
