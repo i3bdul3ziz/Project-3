@@ -19,11 +19,11 @@ router.post("/home/create", (req, res) => {
     name: req.body.name,
     image: req.body.image,
     expiration_date: req.body.expiration_date,
-    address: {
-      city: req.body.city,
-      street: req.body.street,
-    },
-    time_to_pick: req.body.time_to_pick,
+    address: req.body.address,
+    time_from: req.body.time_from,
+    time_till: req.body.time_till,
+    lat: req.body.lat,
+    lng: req.body.lng
   };
   let item = new Item(newItem);
   item

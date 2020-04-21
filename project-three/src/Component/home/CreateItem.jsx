@@ -1,17 +1,21 @@
 import React, { useState, useEffect } from 'react'
-import { Row, Form, Col, Button, Alert } from 'react-bootstrap'
+import { Row, Form, Col, Button, Alert, Image } from 'react-bootstrap'
+import '../../index.css'
 import Axios from 'axios'
 import TimePicker from 'react-time-picker'
+import GoogleMapReact from 'google-map-react'
+import markerPath from '../../hiclipart.com.png'
 
 export const CreateItem = (props) => {
     const [item, setItem] = useState({})// item info
     // const [register , setRegister] = useState(false) // to show aleart
 
+    const Marker = () => <Image width={20} height={20} src={markerPath} />
 
     //to add the input inside item
     let onChangeInput = ({ target: { name, value } }) => {
         setItem({ ...item, [name]: value })
-        console.log(item)
+        // console.log(item)
     }
 
     let onChangeTime = ( name, value ) => {
@@ -34,13 +38,36 @@ export const CreateItem = (props) => {
             })
             .catch(err => console.log(err))
     }
-//==================================================
+ 
+
+    const defaultProps = {
+        center: {
+        lat: 23.8859,
+        lng: 45.0792
+        },
+        zoom: 6
+    }
+    let latm = 23.8859
+    let lngm = 45.0792
+
+    function getLatLng({lat, lng}){
+        setItem({ ...item, "lat": lat, "lng": lng})
+        console.log(lat)
+        console.log(lng)
+        latm = lat
+        lngm = lng
+        // setItem({ ...item, "lng": lng })
+    }
+    
+        //==================================================
     return (
         <>
             {/* {register && <Alert variant={"danger"}>
               the email used . plz change the email 
             </Alert> } */}
-            <Form className="mt-5" >
+            <Row className="mb-5 mx-0">
+            <Col md={8}>
+            <Form className="mt-5 mr-0" >
                 <Row className="justify-content-center mt-5">
                     <Col md={8}>
                         <Form.Row className="my-4">
@@ -73,7 +100,7 @@ export const CreateItem = (props) => {
                             <Form.Control placeholder="1234 Main St" name="address" onChange={(e) => onChangeInput(e)} />
                         </Form.Group>
                         <Form.Label>Time-From</Form.Label>
-                        <TimePicker as={Col} md={6}
+                        <TimePicker
                             className="form-control"
                             disableClock={true}
                             clockIcon={null}
@@ -82,7 +109,7 @@ export const CreateItem = (props) => {
                             onChange={(e) => onChangeTime("time_from", e )}
                         />
                         <Form.Label>Time-Till</Form.Label>
-                        <TimePicker as={Col} md={6}
+                        <TimePicker
                             className="form-control"
                             disableClock={true}
                             clockIcon={null}
@@ -90,15 +117,31 @@ export const CreateItem = (props) => {
                             name="time_till"
                             onChange={(e) => onChangeTime("time_till", e)}
                         />
-                        <Row>
-                        <Button variant="primary" type="submit" onClick={(e) => onSubmit(e)}>
-                            Signup
+
+                        <Button className="mt-5 mr-1" variant="primary" type="submit" onClick={(e) => onSubmit(e)}>
+                            Create Item
                         </Button>
-                        </Row>
+
                     </Col>
                 </Row>
             </Form>
-
+            </Col>
+            <Col md={4} id="marginLeft">
+            <div className="mt-5" style={{ height: '79%', width: '100%' }}>
+                <GoogleMapReact
+                bootstrapURLKeys={{ key: 'AIzaSyCVCIuwNO1D5Qr2qyD3fWycf97sJcTyTx8' }}
+                defaultCenter={defaultProps.center}
+                defaultZoom={defaultProps.zoom}
+                onClick={(e) => getLatLng(e)}
+                >
+                    {/* <Marker
+                        lat={23}
+                        lng={45}
+                        /> */}
+                </GoogleMapReact>
+            </div>
+            </Col>
+            </Row>
         </>
     )
 }

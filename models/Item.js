@@ -6,19 +6,20 @@ const itemSchema = new Schema(
     name: String,
     image: String,
     expiration_date: Date,
-    location: String,
-    address: {
-        city: String,
-        street: String
-    },
 
-    time_to_pick: String,
+    address: String,
+    time_from: String,
+    time_till: String,
     isAvailble : false,
+    lat: String,
+    lng: String
+
     comment: [
       {
         type:String
       }
     ]
+
   },
   
 
