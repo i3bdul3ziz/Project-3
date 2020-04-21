@@ -9,6 +9,7 @@ import { SingUp } from './Component/user/Signup.jsx';
 import { Signin } from './Component/user/Signin.jsx';
 import  Profile  from './Component/user/Profile';
 import { CreateItem } from './Component/home/CreateItem';
+import Item, { item } from './Component/item/Item';
 import jwt_decode from 'jwt-decode'
 import storage from "./firebase/firebase"
 
@@ -60,9 +61,10 @@ export default class App extends Component {
         <Route path="/profile/:id" component={Profile}/>
         <Route path= '/signin' render ={ (props) => <Signin  {...props} userLogin = {this.userLogin}/>} />
         <Route path= '/signup' component ={SingUp} />
+        <Route path= '/home/:id' component ={Item} />
       </Switch>
 
-      <Navbar className="mt-5" bg="dark" variant="light" sticky="bottom">
+      <Navbar className="mt-5" fixed="bottom" bg="dark" variant="light" sticky="bottom">
         <Nav >
         copyrights
         </Nav>
