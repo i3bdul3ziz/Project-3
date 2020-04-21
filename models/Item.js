@@ -13,7 +13,12 @@ const itemSchema = new Schema(
     },
 
     time_to_pick: String,
-    isAvailble : false
+    isAvailble : false,
+    comment: [
+      {
+        type:String
+      }
+    ]
   },
   
 

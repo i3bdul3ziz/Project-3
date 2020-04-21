@@ -11,7 +11,7 @@ const Nave = () => {
         <Navbar className="color-nav" variant="light" sticky="top">
           <Nav className="mr-auto">
             <Image width={120} height={100} src={logo}/>
-            <Nav.Link as={Link} to="/">
+            <Nav.Link as={Link} to="/home">
               Home
             </Nav.Link>
             <Nav.Link as={Link} to="/about">
@@ -19,10 +19,10 @@ const Nave = () => {
             </Nav.Link>
           </Nav>
           <Nav>
-            <Nav.Link as={Link} to="/login">
+            <Nav.Link as={Link} to="/signin">
               Login
             </Nav.Link>
-            <Nav.Link as={Link} to="/register">
+            <Nav.Link as={Link} to="/signup">
               Register
             </Nav.Link>
           </Nav>
