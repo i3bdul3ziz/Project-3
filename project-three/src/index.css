@@ -26,3 +26,8 @@ code {
   top: 330px !important;
   padding: 4.25rem !important;
 }
+
+#marginLeft {
+  margin-left: -8%;
+  margin-top: 4.5%;
+}
