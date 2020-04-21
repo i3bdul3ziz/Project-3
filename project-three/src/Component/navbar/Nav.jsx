@@ -1,15 +1,16 @@
 import React, { Component } from "react";
-import { Navbar, Nav } from "react-bootstrap";
+import { Navbar, Nav, Image } from "react-bootstrap";
 import { Link } from "react-router-dom"
-import '../index.css'
+import '../../index.css'
+import logo from '../../logo.png'
 
 const Nave = () => {
   
     return (
       <div>
-        <Navbar className="color-nav mb-5" variant="light" fixed="top">
+        <Navbar className="color-nav" variant="light" sticky="top">
           <Nav className="mr-auto">
-            <Navbar.Brand>Title</Navbar.Brand>
+            <Image width={120} height={100} src={logo}/>
             <Nav.Link as={Link} to="/">
               Home
             </Nav.Link>
