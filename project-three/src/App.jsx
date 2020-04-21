@@ -9,9 +9,12 @@ import { SingUp } from './Component/user/Signup.jsx';
 import { Signin } from './Component/user/Signin.jsx';
 import  Profile  from './Component/user/Profile';
 import { CreateItem } from './Component/home/CreateItem';
+import About from './Component/home/About';
+import jwt_decode from 'jwt-decode'
 import Item, { item } from './Component/item/Item';
 import jwt_decode from 'jwt-decode'
 import storage from "./firebase/firebase"
+
 
 export default class App extends Component {
 
@@ -57,6 +60,7 @@ export default class App extends Component {
       
       <Switch>
         <Route exact path="/home" render={()=> <Home />} />
+        <Route path="/about" component={About}/>
         <Route path="/home/create" component={CreateItem}/>
         <Route path="/profile/:id" component={Profile}/>
         <Route path= '/signin' render ={ (props) => <Signin  {...props} userLogin = {this.userLogin}/>} />
