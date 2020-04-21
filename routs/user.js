@@ -13,13 +13,13 @@ router.post("/signup", (req, res) => {
   console.log(newUser);
   User.findOne({ email: newUser.email })
     .then((user) => {
-      console.log("newUers insed findone");
+      console.log("newUers inside findone");
       if (!user) {
         bcrypt.hash(newUser.password, 10, (err, hash) => {
           console.log("got to hash");
           newUser.password = hash;
           User.create(newUser).then(() => {
-            console.log("newUers insede creatUser");
+            console.log("newUers inside creatUser");
             res.json({ msg: "user created", userInf: newUser, register: true });
           });
         });
@@ -56,8 +56,24 @@ router.post("/signin", (req, res) => {
 });
 // console.log("is working");
 
-router.put("/profilel", (req, res) => {
-  res.json({ msg: "Posts works" });
+router.put("/profile/:id", (req, res) => {
+  let userNew = {
+    name : req.body.name,
+    image : req.body.image,
+    password: req.body.password
+  }
+  bcrypt.hash(req.body.password, 10, (err, hash) => {
+    console.log("got to hash");
+    userNew.password = hash;
+
+  User.findByIdAndUpdate(req.params.id,{$set:userNew} ,{
+    new : true
+  })
+  .then(user => {
+    res.json({profile :user });
+  });
+  });
 });
+  
 
 module.exports = router;
