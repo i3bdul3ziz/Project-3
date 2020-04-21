@@ -11,9 +11,13 @@ const userSchema = new Schema(
     password: {
       type: String,
     },
-    items: [],
+    items: [{ 
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Item"
+  }],
     image: String,
   },
+  
   { timestamps: true }
 );
 

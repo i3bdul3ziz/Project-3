@@ -4,7 +4,15 @@ const router = express.Router();
 const Item = require("../models/Item");
 // const User = require("../models/User");
 
-router.get("/home", (req, res) => {});
+router.get("/home", async(req, res) => {
+  try {
+    let items = await Item.find({});
+
+    return res.json({ items }).status(200);
+  } catch (error) {
+    return res.json({ message: "no item" }).status(400);
+  }
+});
 
 router.post("/home/create", (req, res) => {
   const newItem = {
@@ -22,8 +30,7 @@ router.post("/home/create", (req, res) => {
     .save()
     .then(() => {
       console.log("good!");
-      User.findById("5e9c5409a8cc573dee285f98", (err, user) => {
-        // console.log(req.user);
+      User.findById(req.body.id, (err, user) => {
         user.items.push(item);
         user.save();
       });
@@ -34,12 +41,39 @@ router.post("/home/create", (req, res) => {
     });
 });
 
-router.get("/home/:id", (req, res) => {
+router.get("/home/:id", async (req, res) => {
       
+  try {
+    let item = await Item.findById(req.params.id);
+
+    return res.json({ item }).status(200);
+  } catch (error) {
+    return res.json({ message: "No item" }).status(400);
+  }
 });
 
 router.put("/home/:id/edit", (req, res) => {
-       
+  let itemNew = {
+    name : req.body.name,
+    image : req.body.image,
+    expiration_date: req.body.expiration_date,
+    location: req.body.location,
+    address: {
+      city: req.body.city,
+      street: req.body.street
+  },
+  time_to_pick : req.body.time_to_pick
+  }
+  Item.findByIdAndUpdate(req.params.id,{$set:itemNew} ,{
+    new : true
+  })  
+  .then(item => {
+    res.json({edit :item });
+  });
 });
+
+router.delete("/home/:id/delete", (req, res) =>  {
+  Items.findByIdAndDelete(req.params.id);
+})
 
 module.exports = router;
