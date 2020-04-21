@@ -5,12 +5,19 @@ export default function About() {
     return (
        
             <div>
-                <h1>About us</h1>
+                <h1>About </h1>
 
-                <p> we are here to help you and you can contact us </p>
-                <p>for any more information leave a massage</p>
-              <form class="row"/>
-                <div class="col-md-6"/>
+                <p> this applacation is here to help you ppl and make food non wasted
+                     <br/> this applacation is here to help you ppl and make food non wasted
+                     <br/> this applacation is here to help you ppl and make food non wasted
+                     <br/> this applacation is here to help you ppl and make food non wasted
+                     </p>
+              
+                {/* <p>for any more information leave a massage</p> */}
+
+                <h2>contact us</h2>
+              <form className="mt-"/>
+                <col class="col-md-6"/>
                   <div class="form-group"/>
                     <label for="name">Name*</label>
                     <input type="text" class="form-control"
