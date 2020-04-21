@@ -2,7 +2,7 @@ import React , {useState , useEffect} from 'react'
 import { Container, Row, Col, Card,Button} from "react-bootstrap";
 import axios from "axios";
 import '../../index.css'
-import { withRouter, NavLink } from "react-router-dom";
+import { withRouter, NavLink , Link} from "react-router-dom";
 
 
 const Items = () => {
@@ -83,7 +83,7 @@ const Items = () => {
                     <Card.Text>
                         exp 06/22
                     </Card.Text>
-                    <Button variant="primary">More info</Button>
+                    <Button as ={Link} variant="primary" to={`/home/${item._id}`}>More info</Button>
                     </Card.Body>
                 </Card>
                 

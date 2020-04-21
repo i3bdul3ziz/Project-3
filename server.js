@@ -4,6 +4,7 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const authRoutes = require("./routs/user");
 const itemRoutes = require("./routs/items");
+const contactUsRoutes = require("./routs/contactUs");
 
 mongoose
   .connect(
@@ -20,6 +21,7 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use(itemRoutes);
 app.use(authRoutes);
+app.use(contactUsRoutes);
 
 app.get("/", (req, res) => {
   res.send("test");

@@ -6,12 +6,20 @@ const itemSchema = new Schema(
     name: String,
     image: String,
     expiration_date: Date,
+
     address: String,
     time_from: String,
     time_till: String,
     isAvailble : false,
     lat: String,
     lng: String
+
+    comment: [
+      {
+        type:String
+      }
+    ]
+
   },
   
 
