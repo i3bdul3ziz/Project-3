@@ -1,8 +1,8 @@
-// const User = require('../models/User')
 const express = require("express");
 const router = express.Router();
 const Item = require("../models/Item");
-// const User = require("../models/User");
+const isLoggedIn = require("../config/config");
+const Comment =require("../models/Comments")
 
 router.get("/home", async(req, res) => {
   try {
@@ -14,15 +14,16 @@ router.get("/home", async(req, res) => {
   }
 });
 
-router.post("/home/create", (req, res) => {
+router.post("/home/create", isLoggedIn, (req, res) => {
   const newItem = {
     name: req.body.name,
     image: req.body.image,
+    user: req.user._id,
     expiration_date: req.body.expiration_date,
     address: req.body.address,
     time_from: req.body.time_from,
     time_till: req.body.time_till,
-    lat: req.body.lat,
+    lat:req.body.lat,
     lng: req.body.lng
   };
   let item = new Item(newItem);
@@ -30,7 +31,7 @@ router.post("/home/create", (req, res) => {
     .save()
     .then(() => {
       console.log("good!");
-      User.findById(req.body.id, (err, user) => {
+      User.findById(req.user._id, (err, user) => {
         user.items.push(item);
         user.save();
       });
@@ -51,6 +52,32 @@ router.get("/home/:id", async (req, res) => {
     return res.json({ message: "No item" }).status(400);
   }
 });
+
+router.post('/home/:id', isLoggedIn, (req, res) => {
+  const newComment = {
+    comment: req.body.comment,
+    item: req.params.id,
+    user: req.user._id,
+  }
+  let comment = new Comment(newComment)
+  comment
+      .save()
+      .then(() => {
+          Item.findById(req.params.id, (err, item) => {
+              item.comments.push(comment)
+              item.save()
+          })
+          User.findById(req.user._id, (err, user) => {
+              user.comments.push(comment)
+              user.save()
+          })
+          res.json({ msg: "Comment Created", comment: newComment });
+      })
+      .catch( err => {
+          console.log(err)
+      })
+
+})
 
 router.put("/home/:id/edit", (req, res) => {
   let itemNew = {

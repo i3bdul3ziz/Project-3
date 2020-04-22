@@ -5,22 +5,14 @@ import '../../index.css'
 import { withRouter, NavLink , Link} from "react-router-dom";
 
 
-const Items = () => {
+const Items = (props) => {
 
     const [items , setItems] = useState([])
     function getItems (){
         axios
-        .get(`http://localhost:4000/home` // , {
-          // cancelToken: this.axiosCancelSource.token,
-          // headers: {
-          //   "x-auth-token": localStorage.getItem("token"),
-          // },
-        )
+        .get(`http://localhost:4000/home`)
         .then((res) => {
-            // console.log(res.data.items)
-            
           setItems(res.data.items)
-
         })
         .catch((err) => console.log(err.response))
     }
@@ -59,12 +51,21 @@ const Items = () => {
                         This is a wider card with supporting text below as a natural lead-in to<br/>
                         additional content. This content is a little bit longer.
                         </Card.Text>
-                        <Card.Text><NavLink
-                                to={'/home/create'}
-                                className="btn btn-primary"
-                                >
+                        <Card.Text>
+                            {!props.isLogin?
+                            <NavLink
+                            to={'/signin'}
+                            className="btn btn-primary">
+                            Create Item
+                            </NavLink>
+                            :
+                            <NavLink
+                                to={'/items/create'}
+                                className="btn btn-primary">
                                 Create Item
-                        </NavLink></Card.Text>
+                            </NavLink>
+                            }
+                        </Card.Text>
                     </Card.ImgOverlay>
                 </Card>
             </Col>
@@ -83,7 +84,7 @@ const Items = () => {
                     <Card.Text>
                         exp 06/22
                     </Card.Text>
-                    <Button as ={Link} variant="primary" to={`/home/${item._id}`}>More info</Button>
+                    <Button as ={Link} variant="primary" to={`/items/${item._id}`}>More info</Button>
                     </Card.Body>
                 </Card>
                 
