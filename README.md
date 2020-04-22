@@ -27,7 +27,6 @@
 
 
 
-
 # wireframes
 
 ![](assets/home page.png)<br/>
