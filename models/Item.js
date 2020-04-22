@@ -11,8 +11,8 @@ const itemSchema = new Schema(
     time_from: String,
     time_till: String,
     isAvailble : false,
-    lat: String,
-    lng: String,
+    lat: Number,
+    lng: Number,
     comments: [{ 
       type: mongoose.Schema.Types.ObjectId,
       ref: "Comment"
