@@ -10,7 +10,6 @@ import { Signin } from './Component/user/Signin.jsx';
 import  Profile  from './Component/user/Profile';
 import { CreateItem } from './Component/home/CreateItem';
 import About from './Component/home/About';
-import background from './background.jpg'
 import jwt_decode from 'jwt-decode'
 import Item from './Component/item/Item';
 // import storage from "./firebase/firebase"
@@ -84,9 +83,9 @@ export default class App extends Component {
       }
       </Switch>
 
-      <Navbar className="mt-5" fixed="bottom" bg="light" variant="light" sticky="bottom">
+      {/* <Navbar className="mt-5" fixed="bottom" bg="light" variant="light" sticky="bottom">
              <p id= "copyright">copyrights to Venus Team. </p>
-        </Navbar>
+        </Navbar> */}
     </div>
     )
   }

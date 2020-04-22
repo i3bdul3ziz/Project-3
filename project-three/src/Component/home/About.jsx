@@ -1,42 +1,69 @@
 import React from 'react'
-// import  {Row, Col,Button} from "react-bootstrap";
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import { faGithub } from '@fortawesome/free-solid-svg-icons'
+import { Container, Row, Col, Card } from "react-bootstrap";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faLinkedin , faGithub }  from '@fortawesome/free-brands-svg-icons'
 
 export default function About() {
     return (
        
-            <div>
-                <h1>About </h1>
+            <div id="aboutpage">
 
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
-                  Inventore unde commodi iste quidem quo quas officiis animi rem? 
-                  Doloremque eveniet atque sequi tenetur. Vel quis ab in, ullam saepe nam.
-                </p>
-              
+                <h2 id="contact">CONTACT VENUS TEAM</h2>
 
-                <h2>contact us</h2>
+                <Container className="mt-5" fluid> 
+              <Row className="mt-5 justify-content-center">
 
-                {/* <FontAwesomeIcon icon={faGithub} /> */}
+              <Col md={4} className="mt-5"> 
+                 <Card className="text-center" bg={"dark"} text={'light'} style={{ width: '18rem' }} >
+               <Card.Header>Abdulhameed Alghamdi</Card.Header>
+               <Card.Body> <Card.Title> Full-Stack Developer </Card.Title>
+               <Card.Text>
+               <a href = "https://www.linkedin.com/in/abdulhameed-alghamdi/" ><FontAwesomeIcon size="2x" icon={faLinkedin} /></a>
+                <a href = "https://git.generalassemb.ly/i7medo" ><FontAwesomeIcon size="2x" icon={faGithub} /></a>   
+                </Card.Text>
+                </Card.Body>
+                </Card>
+                </Col>
 
-                 {/* <FontAwesomeIcon icon={fagithub} />
-                
+                 <Col md={4} className="mt-5"> 
+                 <Card className="text-center" bg={"dark"} text={'light'} style={{ width: '18rem' }} >
+               <Card.Header>Abdulaziz Althagafi</Card.Header>
+               <Card.Body> <Card.Title> Full-Stack Developer </Card.Title>
+               <Card.Text>
+               <a href = "https://git.generalassemb.ly/labdul2ziz" ><FontAwesomeIcon size="2x" icon={faLinkedin} /></a>
+                  <a href = "https://git.generalassemb.ly/labdul2ziz" ><FontAwesomeIcon size="2x" icon={faGithub} /></a>    
+                </Card.Text>
+                </Card.Body>
+                </Card>
+                </Col>
 
-                 <FontAwesomeIcon icon={falinkedin}/> */}
-                 {/* <i className="fab fa-3x fa-github"></i>
+                 <Col md={4} className="mt-5"> 
+                 <Card className="text-center" bg={"dark"} text={'light'} style={{ width: '18rem' }} >
+               <Card.Header>Mohammed Alhaddad</Card.Header>
+               <Card.Body> <Card.Title> Full-Stack Developer </Card.Title>
+               <Card.Text>
+               <a href = "https://www.linkedin.com/in/mohammed-alhaddad/" ><FontAwesomeIcon size="2x" icon={faLinkedin} /></a>
+                <a href = "https://git.generalassemb.ly/alhaddad" ><FontAwesomeIcon size="2x" icon={faGithub} /></a> 
+                </Card.Text>
+                </Card.Body>
+                </Card>
+                </Col>
 
-                <i className="fab fa-3x fa-linkedin"></i>
-                <i className="fab fa-3x fa-github"></i>
+                 <Col md={4} className="mt-5"> 
+                 <Card className="text-center" bg={"dark"} text={'light'} style={{ width: '18rem' }} >
+               <Card.Header>Najlaa Alahamri</Card.Header>
+               <Card.Body> <Card.Title> Full-Stack Developer </Card.Title>
+               <Card.Text>
+                <a href = "https://www.linkedin.com/in/najlaaalahmari/" ><FontAwesomeIcon size="2x" icon={faLinkedin} /></a>
+                <a href = "https://git.generalassemb.ly/n2jlaa" ><FontAwesomeIcon size="2x" icon={faGithub} /></a>      
+                </Card.Text>
+                </Card.Body>
+                </Card>
+                </Col>
 
+                </Row>
+                </Container>
 
-                <i className="fab fa-3x fa-linkedin"></i>
-                <i className="fab fa-3x fa-github"></i>
-
-
-                <i className="fab fa-3x fa-linkedin"></i>
-                <i className="fab fa-3x fa-github"></i> */}
-
-              
                 </div>
              
           

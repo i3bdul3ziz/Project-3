@@ -44,7 +44,7 @@ const Items = (props) => {
                 <h3>First slide label</h3>
                 <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p> */}
                 <Card className="text-black" id="borderstyle" fluid >
-                    <Card.Img id="borderstyle" height={597} src="https://image.freepik.com/free-photo/food-delivery-concept-lunch-container_82893-14596.jpg" alt="Card image" />
+                    <Card.Img id="borderstyle" height={600} src="https://i.pinimg.com/564x/15/c6/89/15c6890a3d14b12073ed407be2de7c13.jpg" alt="Card image" />
                     <Card.ImgOverlay className="fixposition" >
                         <Card.Title className="text-light">!Waste</Card.Title>
                         <Card.Text className="text-light">
@@ -77,18 +77,17 @@ const Items = (props) => {
                                            
                 <Col md={4} className="mt-5">
 
-                <Card className="mt-5 mb-5" style={{ width: '18rem' }}>
-                    <Card.Img variant="top" src={item.image} />
-                    <Card.Body>
-                    <Card.Title>{item.name}</Card.Title>
-                    <Card.Text>
-                    {item.expiration_date} 
-                    </Card.Text>
-                    <Button as ={Link} variant="primary" to={`/items/${item._id}`}>More info</Button>
-                    </Card.Body>
+                <Card className="text-center" bg={"dark"} text={'light'} style={{ width: '18rem' }} >
+                 <Card.Img variant="top" src={item.image} />              
+                  <Card.Body> <Card.Title> {item.name} </Card.Title>
+               <Card.Text>
+               {item.expiration_date} 
+                </Card.Text>
+                <Button as ={Link} variant="primary" to={`/items/${item._id}`}>More info</Button>
+                </Card.Body>
                 </Card>
-                
                 </Col>
+                
                 
                 </>)}
             </Row>

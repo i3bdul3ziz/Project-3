@@ -8,3 +8,45 @@ body {
   /* margin-left: 50%; */
   text-align: center;
 }
+
+#about{
+  text-align: center;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-style: bold;
+  padding-top: 20px;
+  color:white
+}
+
+#p{
+  text-align: center;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  padding-top: 20px;
+  color: white;
+
+}
+
+#contact{
+  text-align: center;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-style: bold;
+  padding-top: 20px;
+  color: white;
+  
+}
+
+#aboutpage{
+  background-image: url(https://i.pinimg.com/564x/71/f9/eb/71f9eb8ba33e1de57673b9cc40e7384d.jpg);
+  background-size: cover;
+}
+
+.login-component{
+  background-image: url(https://i.pinimg.com/564x/71/f9/eb/71f9eb8ba33e1de57673b9cc40e7384d.jpg);
+  background-size: cover;
+  
+
+}
+
+#itemspage{
+  background-image: url(https://i.pinimg.com/564x/71/f9/eb/71f9eb8ba33e1de57673b9cc40e7384d.jpg);
+  background-size: cover;
+}

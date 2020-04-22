@@ -33,7 +33,7 @@ useEffect(() => {
         .catch(err => console.log(err))
     }
     return (
-        <>
+        <div className="login-component">
            <Form className="mt-5">
                 <Row className="justify-content-center mt-5">
                     <Col md={8}>
@@ -54,6 +54,6 @@ useEffect(() => {
                     </Col>
                 </Row>
             </Form>
-        </>
+        </div>
     )
 }
