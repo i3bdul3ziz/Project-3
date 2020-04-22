@@ -83,11 +83,9 @@ export default class App extends Component {
       }
       </Switch>
 
-      <Navbar className="mt-5" fixed="bottom" bg="dark" variant="light" sticky="bottom">
-        <Nav >
-        copyrights
-        </Nav>
-        </Navbar>
+      {/* <Navbar className="mt-5" fixed="bottom" bg="light" variant="light" sticky="bottom">
+             <p id= "copyright">copyrights to Venus Team. </p>
+        </Navbar> */}
     </div>
     )
   }

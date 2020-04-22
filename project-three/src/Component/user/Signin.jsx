@@ -33,7 +33,7 @@ useEffect(() => {
         .catch(err => console.log(err))
     }
     return (
-        <>
+        <div className="login-component">
            <Form className="mt-5">
                 <Row className="justify-content-center mt-5">
                     <Col md={8}>
@@ -48,12 +48,12 @@ useEffect(() => {
                                 <Form.Control type="password" placeholder="Password" name="password" onChange={(e) => onChangeInput(e)} />
                             </Form.Group>
                         </Form.Row>
-                        <Button variant="primary" type="submit" onClick={(e) => onSubmit(e)}>
-                            Signin
+                        <Button variant="outline-primary" type="submit" onClick={(e) => onSubmit(e)}>
+                            Sign in
                     </Button>
                     </Col>
                 </Row>
             </Form>
-        </>
+        </div>
     )
 }
