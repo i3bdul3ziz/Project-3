@@ -71,8 +71,8 @@ const Items = (props) => {
                     <Card.ImgOverlay className="fixposition" >
                         <Card.Title className="text-light">!Waste</Card.Title>
                         <Card.Text className="text-light">
-                        This is a wider card with supporting text below as a natural lead-in to<br/>
-                        additional content. This content is a little bit longer.
+                       <p> !WASTE connects neighbours with each other and with local businesses so surplus food can be shared, not thrown away.</p>
+                        <p> Here at !WASTE we believe that small actions can lead to big change.</p>
                         </Card.Text>
                         <Card.Text>
                             {!props.isLogin?
