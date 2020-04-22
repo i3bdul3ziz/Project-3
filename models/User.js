@@ -14,7 +14,11 @@ const userSchema = new Schema(
     items: [{ 
       type: mongoose.Schema.Types.ObjectId,
       ref: "Item"
-  }],
+    }],
+    comments:[{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Comment"
+    }],
     image: String,
   },
   

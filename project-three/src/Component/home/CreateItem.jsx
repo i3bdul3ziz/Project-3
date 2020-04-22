@@ -27,14 +27,7 @@ export const CreateItem = (props) => {
         Axios.post('http://localhost:4000/home/create', item)
             .then(res => {
                 console.log(res)
-            //         if (res.data.register){
-            //             props.history.push('/home')
-            //    }else{
-            //             // setRegister(true)
-            //             // setTimeout(() => {
-            //             //     setRegister(false)
-            //             // }, 4000);
-            //         } 
+                props.history.push('/items')
             })
             .catch(err => console.log(err))
     }

@@ -21,7 +21,7 @@ useEffect(() => {
 
                 localStorage.setItem('token' ,res.data.token )
                 props.userLogin()
-                props.history.push('/home')
+                props.history.push('/items')
             }else {
 
                 console.log("email or password is not correct")
