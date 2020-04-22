@@ -29,14 +29,14 @@
 
 # wireframes
 
-![](assets/home page.png)<br/>
-![](assets/signin page.png)<br/>
-![](assets/profile page.png)<br/>
-![](assets/item page.png)<br/>
-![](assets/create item page.png)<br/>
-![](assets/delete item.png)<br/>
-![](assets/schemas.png)<br/>
-![](assets/signup.png)<br/>
+![](home page.png)<br/>
+![](signin page.png)<br/>
+![](profile page.png)<br/>
+![](item page.png)<br/>
+![](create item page.png)<br/>
+![](delete item.png)<br/>
+![](schemas.png)<br/>
+![](signup.png)<br/>
 
 
 ###### we work as team of four person
