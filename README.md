@@ -29,14 +29,7 @@
 
 # wireframes
 
-![](assets/home page.png)<br/>
-![](assets/signup.png)<br/>
-![](assets/signin page.png)<br/>
-![](assets/profile page.png)<br/>
-![](assets/item page.png)<br/>
-![](assets/create item page.png)<br/>
-![](assets/delete item.png)<br/>
-![](assets/schemas.png)<br/>
+
 
 
 
