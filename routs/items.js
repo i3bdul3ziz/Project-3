@@ -15,6 +15,7 @@ router.get("/home", async(req, res) => {
 });
 
 router.post("/home/create", isLoggedIn, (req, res) => {
+  console.log("test")
   const newItem = {
     name: req.body.name,
     image: req.body.image,
@@ -96,7 +97,10 @@ router.put("/home/:id/edit", (req, res) => {
   })  
   .then(item => {
     res.json({edit :item });
-  });
+  })
+  .catch(err => {
+    res.status(400).json({messge: "can not update"})
+  })
 });
 
 router.delete("/home/:id/delete", (req, res) =>  {

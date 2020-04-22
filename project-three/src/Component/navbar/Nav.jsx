@@ -18,7 +18,7 @@ const Nave = (props) => {
               About
             </Nav.Link>
           </Nav>
-          <Nav> {!props.user  ?
+          <Nav> {!props.isLogin ?
            <>
             <Nav.Link as={Link} to="/signin">
               Login

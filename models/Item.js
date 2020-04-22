@@ -13,15 +13,6 @@ const itemSchema = new Schema(
     isAvailble : false,
     lat: String,
     lng: String,
-<<<<<<< HEAD
-
-    comment: [
-      {
-        type:String
-      }
-    ]
-
-=======
     comments: [{ 
       type: mongoose.Schema.Types.ObjectId,
       ref: "Comment"
@@ -30,7 +21,6 @@ const itemSchema = new Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "User"
     }
->>>>>>> 9b8fe09aa4c3647d5d3e8765215537d4c3097af7
   },
   
 

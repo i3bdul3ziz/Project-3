@@ -3,6 +3,7 @@ import Axios from "axios";
 import { Container, Row, Col, Image , Button } from "react-bootstrap";
 import GoogleMapReact from 'google-map-react'
 import markerPath from '../../hiclipart.com.png'
+// import {storage} from "./firebase/firebase"
 
 export default function Item (props) {
     const [item , setItem] = useState(null)
