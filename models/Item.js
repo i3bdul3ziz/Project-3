@@ -5,21 +5,22 @@ const itemSchema = new Schema(
   {
     name: String,
     image: String,
-    expiration_date: Date,
+    expiration_date: String,
 
     address: String,
     time_from: String,
     time_till: String,
     isAvailble : false,
     lat: String,
-    lng: String
-
-    comment: [
-      {
-        type:String
-      }
-    ]
-
+    lng: String,
+    comments: [{ 
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Comment"
+    }],
+    user: { 
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User"
+    }
   },
   
 
