@@ -103,8 +103,38 @@ router.put("/home/:id/edit", (req, res) => {
   })
 });
 
-router.delete("/home/:id/delete", (req, res) =>  {
-  Items.findByIdAndDelete(req.params.id);
-})
+router.delete("/home/:id/delete", isLoggedIn,(req, res) =>  {
+ console.log(req.user)
+ 
+ Item.findById(req.params.id)
+ .then(item => {
+   if (item.user.equals(req.user._id)) {
+     console.log("it is a match")
+     Item.findByIdAndDelete(req.params.id)
+  .then(()=>{
+    
+    return res.status(200).json({message: "deleted"})
+  })
+  .catch(err => {
+    console.log(err)
+   return res.status(400).json({message: "somthing went wrong."})
+  })
+   }
+  return res.status(400).json({message: "you are not allowed to delete"})
+  //  console.log("it is not a match")
+ })
+ .catch(error => {
+   console.log(error)
+  res.status(400).json({message: "somthing went wrong!"})
+ })
+  // Item.findByIdAndDelete(req.params.id)
+  // .then(()=>{
+  //   res.status(200).json({message: "deleted"})
+  // })
+  // .catch(err => {
+  //   console.log(err)
+  //   res.status(400).json({message: "somthing went wrong"})
+  // })
+});
 
 module.exports = router;

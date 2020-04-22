@@ -8,6 +8,7 @@ import { withRouter, NavLink , Link} from "react-router-dom";
 const Items = (props) => {
 
     const [items , setItems] = useState([])
+    const [message , setMessage] = useState(null)
     function getItems (){
         axios
         .get(`http://localhost:4000/home`)
@@ -31,9 +32,31 @@ const Items = (props) => {
         // }
     })
 
+    let deleteItem = (id)=> {
+        let token = localStorage.token
+        if (token){
+     axios.delete(`http://localhost:4000/home/${id}/delete`, {
+         headers: {token}
+     })
+     .then(msg => console.log("deleted"))
+     .catch(err => {
+         setMessage(err.response.data.message)
+         setTimeout(() => {
+            setMessage(null)
+         },2000);
+        console.log(err.response)}
+     )
+        }
+        console.log(localStorage.token)
+    //      axios.delete(`http://localhost:4000/home/${id}/delete`)
+    //  .then(msg => console.log("deleted"))
+    //  .catch(err => console.log("somthing went wrong"))
+     }
+
 
     return (
       <div>
+          {message ? <div>{message}</div>:null}
         <Row className="mt-0">
             <Col className="mt-0"> 
                 {/* <Image
@@ -72,10 +95,9 @@ const Items = (props) => {
         </Row>
         <Container className="mt-5" fluid>
             <Row className="mt-5 justify-content-center">{items.map(item => 
-            <>
-                       
-                                           
+            <>                         
                 <Col md={4} className="mt-5">
+
 
                 <Card className="text-center" bg={"dark"} text={'light'} style={{ width: '18rem' }} >
                  <Card.Img variant="top" src={item.image} />              
@@ -84,8 +106,10 @@ const Items = (props) => {
                {item.expiration_date} 
                 </Card.Text>
                 <Button as ={Link} variant="primary" to={`/items/${item._id}`}>More info</Button>
+                 <Button onClick={()=> deleteItem(item._id)} variant="primary" >Delete</Button>
                 </Card.Body>
                 </Card>
+
                 </Col>
                 
                 
