@@ -42,10 +42,17 @@ router.post("/home/create", isLoggedIn, (req, res) => {
     });
 });
 
-router.get("/home/:id", async (req, res) => {
+router.get("/home/:id",isLoggedIn ,async (req, res) => {
       
   try {
-    let item = await Item.findById(req.params.id);
+    let item = await Item.findById(req.params.id).populate({
+    path : 'comments',
+    model: 'Comment',
+    populate: {
+      path: "user",
+      model: "User"
+    }
+    });
 
     return res.json({ item }).status(200);
   } catch (error) {
@@ -64,11 +71,11 @@ router.post('/home/:id', isLoggedIn, (req, res) => {
       .save()
       .then(() => {
           Item.findById(req.params.id, (err, item) => {
-              item.comments.push(comment)
+              item.comments.unshift(comment)
               item.save()
           })
           User.findById(req.user._id, (err, user) => {
-              user.comments.push(comment)
+              user.comments.unshift(comment)
               user.save()
           })
           res.json({ msg: "Comment Created", comment: newComment });

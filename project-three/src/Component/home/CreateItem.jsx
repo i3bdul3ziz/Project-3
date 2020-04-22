@@ -8,14 +8,11 @@ import markerPath from '../../hiclipart.com.png'
 
 export const CreateItem = (props) => {
     const [item, setItem] = useState({})// item info
-    // const [register , setRegister] = useState(false) // to show aleart
 
-    const Marker = () => <Image width={20} height={20} src={markerPath} />
 
     //to add the input inside item
     let onChangeInput = ({ target: { name, value } }) => {
         setItem({ ...item, [name]: value })
-        // console.log(item)
     }
 
     let onChangeTime = ( name, value ) => {
@@ -26,10 +23,9 @@ export const CreateItem = (props) => {
         e.preventDefault()
         Axios.post('http://localhost:4000/home/create', item)
             .then(res => {
-                console.log(res)
                 props.history.push('/items')
             })
-            .catch(err => console.log(err))
+            .catch(err => console.log(err.response))
     }
  
 
@@ -40,24 +36,14 @@ export const CreateItem = (props) => {
         },
         zoom: 6
     }
-    let latm = 23.8859
-    let lngm = 45.0792
 
     function getLatLng({lat, lng}){
         setItem({ ...item, "lat": lat, "lng": lng})
-        console.log(lat)
-        console.log(lng)
-        latm = lat
-        lngm = lng
-        // setItem({ ...item, "lng": lng })
     }
     
         //==================================================
     return (
         <>
-            {/* {register && <Alert variant={"danger"}>
-              the email used . plz change the email 
-            </Alert> } */}
             <Row className="mb-5 mx-0">
             <Col md={8}>
             <Form className="mt-5 mr-0" >
@@ -127,10 +113,6 @@ export const CreateItem = (props) => {
                 defaultZoom={defaultProps.zoom}
                 onClick={(e) => getLatLng(e)}
                 >
-                    {/* <Marker
-                        lat={23}
-                        lng={45}
-                        /> */}
                 </GoogleMapReact>
             </div>
             </Col>
