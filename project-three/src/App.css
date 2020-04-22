@@ -2,3 +2,9 @@ body {
   background: #FFF;
   overflow-x: hidden;
 }
+
+#copyright{
+  width: 100%;
+  /* margin-left: 50%; */
+  text-align: center;
+}

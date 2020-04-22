@@ -1,5 +1,7 @@
 import React from 'react'
-import  {Row, Col,Button} from "react-bootstrap";
+// import  {Row, Col,Button} from "react-bootstrap";
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// import { faGithub } from '@fortawesome/free-solid-svg-icons'
 
 export default function About() {
     return (
@@ -7,45 +9,31 @@ export default function About() {
             <div>
                 <h1>About </h1>
 
-                <p> this applacation is here to help you ppl and make food non wasted
-                     <br/> this applacation is here to help you ppl and make food non wasted
-                     <br/> this applacation is here to help you ppl and make food non wasted
-                     <br/> this applacation is here to help you ppl and make food non wasted
-                     </p>
+                
               
-                {/* <p>for any more information leave a massage</p> */}
 
                 <h2>contact us</h2>
-              <form className="mt-"/>
-                <col class="col-md-6"/>
-                  <div class="form-group"/>
-                    <label for="name">Name*</label>
-                    <input type="text" class="form-control"
-                     name="contact[name]" id="name"/>
-                  
-                  <div class="form-group"/>
-                    <label for="inputEmail4">Email*</label>
-                    <input type="email" class="form-control" 
-                    name="contact[email]" id="email"/>
+
+                {/* <FontAwesomeIcon icon={faGithub} /> */}
+
+                 {/* <FontAwesomeIcon icon={fagithub} />
                 
-                  <div class="form-group"/>
-                    <label for="telephone">Phone number*</label>
-                    <input type="text" class="form-control" 
-                    name="contact[telephone]" id="telephone"/>
-                 
-            
-                <div class="col-md-6"/>
-                  <div class="form-group">
-                    <label for="message">Message*</label>
-                     <textarea rows="4" class="form-control message-ta"
-                      name="contact[message]" id="message">
 
-                     </textarea>
-                  </div>
+                 <FontAwesomeIcon icon={falinkedin}/> */}
+                 {/* <i className="fab fa-3x fa-github"></i>
 
-                  <button type="submit" id="contact-submit" class="form-button" 
-                  value="Submit">SEND</button>
-            
+                <i className="fab fa-3x fa-linkedin"></i>
+                <i className="fab fa-3x fa-github"></i>
+
+
+                <i className="fab fa-3x fa-linkedin"></i>
+                <i className="fab fa-3x fa-github"></i>
+
+
+                <i className="fab fa-3x fa-linkedin"></i>
+                <i className="fab fa-3x fa-github"></i> */}
+
+              
                 </div>
              
           

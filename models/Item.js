@@ -12,7 +12,7 @@ const itemSchema = new Schema(
     time_till: String,
     isAvailble : false,
     lat: String,
-    lng: String
+    lng: String,
 
     comment: [
       {

@@ -10,10 +10,9 @@ import { Signin } from './Component/user/Signin.jsx';
 import  Profile  from './Component/user/Profile';
 import { CreateItem } from './Component/home/CreateItem';
 import About from './Component/home/About';
-import jwt_decode from 'jwt-decode'
 import Item, { item } from './Component/item/Item';
+import background from './background.jpg'
 import jwt_decode from 'jwt-decode'
-import storage from "./firebase/firebase"
 
 
 export default class App extends Component {
@@ -68,10 +67,8 @@ export default class App extends Component {
         <Route path= '/home/:id' component ={Item} />
       </Switch>
 
-      <Navbar className="mt-5" fixed="bottom" bg="dark" variant="light" sticky="bottom">
-        <Nav >
-        copyrights
-        </Nav>
+      <Navbar className="mt-5" fixed="bottom" bg="light" variant="light" sticky="bottom">
+             <p id= "copyright">copyrights to Venus Team. </p>
         </Navbar>
     </div>
     )
