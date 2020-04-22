@@ -1,6 +1,12 @@
 # project 3
 
-## It is application made by node.js & rea
+## It is application made by node.js & react 
+## 
+
+
+
+
+![bladerunner](bladerunner.png)
 
 
 
