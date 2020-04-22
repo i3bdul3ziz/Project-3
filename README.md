@@ -29,14 +29,7 @@
 
 # wireframes
 
-![](home page.png)<br/>
-![](signin page.png)<br/>
-![](profile page.png)<br/>
-![](item page.png)<br/>
-![](create item page.png)<br/>
-![](delete item.png)<br/>
-![](schemas.png)<br/>
-![](signup.png)<br/>
+
 
 
 ###### we work as team of four person
