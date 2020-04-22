@@ -9,6 +9,9 @@ import { decode } from "jsonwebtoken";
 
 
 
+// import {storage} from "./firebase/firebase"
+
+
 export default function Item (props) {
     const [item , setItem] = useState(null)
     const [comments , setComments] = useState([])
@@ -80,7 +83,7 @@ export default function Item (props) {
      
    
     return (
-        <div>
+        <div id="itemspage">
             <Container>
                 { item && 
                 <>

@@ -70,7 +70,9 @@ export default class App extends Component {
       <Switch>
         <Route exact path="/items" render={(props)=> <Home {...props} isLogin ={this.state.isLogin}/>} />
         <Route path="/about" component={About}/>
-        <Route path= '/signin' render ={ (props) => <Signin  {...props} isLogin ={this.state.isLogin} userLogin = {this.userLogin}/>} />
+        <Route exact path="/home/create" component={CreateItem}/>
+        <Route path="/profile/:id" component={Profile}/>
+        <Route path= '/signin' render ={ (props) => <Signin  {...props} userLogin = {this.userLogin}/>} />
         <Route path= '/signup' component ={SingUp} />
         {this.state.isLogin ?<>  
         <Route exact path="/items/create" render={(props)=> <CreateItem {...props} user ={this.state.user} />} /> 
@@ -81,11 +83,9 @@ export default class App extends Component {
       }
       </Switch>
 
-      <Navbar className="mt-5" fixed="bottom" bg="dark" variant="light" sticky="bottom">
-        <Nav >
-        copyrights
-        </Nav>
-        </Navbar>
+      {/* <Navbar className="mt-5" fixed="bottom" bg="light" variant="light" sticky="bottom">
+             <p id= "copyright">copyrights to Venus Team. </p>
+        </Navbar> */}
     </div>
     )
   }

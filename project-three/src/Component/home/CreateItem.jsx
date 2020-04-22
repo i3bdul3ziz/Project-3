@@ -1,13 +1,19 @@
 import React, { useState, useEffect } from 'react'
-import { Row, Form, Col, Button, Alert, Image } from 'react-bootstrap'
+import { Row, Form, Col, Button, Alert, Image, FormFile } from 'react-bootstrap'
 import '../../index.css'
 import Axios from 'axios'
 import TimePicker from 'react-time-picker'
 import GoogleMapReact from 'google-map-react'
 import markerPath from '../../hiclipart.com.png'
+import {storage} from "../../firebase/firebase"
 
 export const CreateItem = (props) => {
     const [item, setItem] = useState({})// item info
+
+    // const [register , setRegister] = useState(false) // to show aleart
+    const [imageAsFile, setImageAsFile] = useState('')
+    const [imageAsUrl, setImageAsUrl] = useState({imgUrl: ''})
+
 
 
     //to add the input inside item
@@ -21,7 +27,10 @@ export const CreateItem = (props) => {
     // to add the item info to database
     let onSubmit = (e) => {
         e.preventDefault()
-        Axios.post('http://localhost:4000/home/create', item)
+        Axios.post('http://localhost:4000/home/create', item , {headers: {
+            "token": localStorage.getItem("token"),
+          },
+        } )
             .then(res => {
                 props.history.push('/items')
             })
@@ -40,6 +49,36 @@ export const CreateItem = (props) => {
     function getLatLng({lat, lng}){
         setItem({ ...item, "lat": lat, "lng": lng})
     }
+    console.log(imageAsFile)
+ const handleImageAsFile = (e) => {
+      const image = e.target.files[0]
+      setImageAsFile(imageFile => (image))
+    //   e.preventDefault()
+    console.log('start of upload')
+    // async magic goes here...
+    if(imageAsFile === '') {
+      console.error(`not an image, the image file is a ${typeof(imageAsFile)}`)
+    }
+    const uploadTask = storage.ref(`/images/${imageAsFile.name}`).put(image)
+    //initiates the firebase side uploading 
+    uploadTask.on('state_changed', 
+    (snapShot) => {
+      //takes a snap shot of the process as it is happening
+      console.log(snapShot)
+    }, (err) => {
+      //catches the errors
+      console.log(err)
+    }, () => {
+      // gets the functions from storage refences the image storage in firebase by the children
+      // gets the download url then sets the image from firebase as the value for the imgUrl key:
+      storage.ref('images').child(imageAsFile.name).getDownloadURL()
+       .then(fireBaseUrl => {
+         setImageAsUrl({image: fireBaseUrl})
+         console.log(fireBaseUrl)
+         setItem({ ...item, image: fireBaseUrl })
+       })
+    })
+  }
     
         //==================================================
     return (
@@ -58,7 +97,12 @@ export const CreateItem = (props) => {
                         <Form.Row className="my-4">
                             <Col md={12}>
                                 <Form.Label>Image</Form.Label>
-                                <Form.Control controlId="formGridDate" name="image" onChange={(e) => onChangeInput(e)} />
+                                <Form.File 
+                                 id="custom-file"
+                                  label="Custom file input"
+                                  custom type="file"
+                                  onChange={(e) => handleImageAsFile(e)}
+                                    /> 
                             </Col>
                         </Form.Row>
                         <Form.Row className="my-4">

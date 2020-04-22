@@ -10,15 +10,16 @@ const Nave = (props) => {
       <div>
         <Navbar className="color-nav" variant="light" sticky="top">
           <Nav className="mr-auto">
-            <Image width={120} height={100} src={logo}/>
+            <Navbar.Brand >! Waste</Navbar.Brand>
+            {/* <Image width={120} height={100} src={logo}/> */}
             <Nav.Link as={Link} to="/items">
               Home
             </Nav.Link>
             <Nav.Link as={Link} to="/about">
-              About
+              Contact
             </Nav.Link>
           </Nav>
-          <Nav> {!props.user  ?
+          <Nav> {!props.isLogin ?
            <>
             <Nav.Link as={Link} to="/signin">
               Login

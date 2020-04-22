@@ -52,13 +52,12 @@ export const SingUp = (props) => {
                                 <Form.Control type="password" placeholder="Password" name="password" onChange={(e) => onChangeInput(e)} />
                             </Form.Group>
                         </Form.Row>
-                        <Button variant="primary" type="submit" onClick={(e) => onSubmit(e)}>
-                            Signup
+                        <Button variant="outline-primary" type="submit" onClick={(e) => onSubmit(e)}>
+                            Sign up
                     </Button>
                     </Col>
                 </Row>
             </Form>
-
         </>
     )
 }

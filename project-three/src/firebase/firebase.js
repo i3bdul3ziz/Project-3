@@ -1,21 +1,22 @@
 import firebase from 'firebase/app'
 import 'firebase/storage'
 
-var firebaseConfig = {
-    apiKey: "super secret keys.....asgvegxgevergfvr",
-    authDomain: "tallans-imageupload-tutorial.firebaseapp.com",
-    databaseURL: "https://tallans-imageupload-tutorial.firebaseio.com",
-    projectId: "tallans-imageupload-tutorial",
-    storageBucket: "tallans-imageupload-tutorial.appspot.com",
-    messagingSenderId: "super secret keys.....asgvegxgevergfvr",
-    appId: "super secret app id....adsfa;lsdkjf",
-    measurementId: "super secret as;dlkfjal;dskjf"
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyBYqBmLnPqRaKkaySQyRLZzHVzu6N-wRAU",
+    authDomain: "waste-e300c.firebaseapp.com",
+    databaseURL: "https://waste-e300c.firebaseio.com",
+    projectId: "waste-e300c",
+    storageBucket: "waste-e300c.appspot.com",
+    messagingSenderId: "45352779679",
+    appId: "1:45352779679:web:a873385560daa1d66987aa",
+    measurementId: "G-QYTJ1R6Z24"
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
+  // firebase.analytics();
+
   const storage = firebase.storage()
- //analytics is optional for this tutoral 
-  firebase.analytics();
 
   export  {
     storage, firebase as default

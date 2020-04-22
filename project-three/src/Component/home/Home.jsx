@@ -8,6 +8,7 @@ import { withRouter, NavLink , Link} from "react-router-dom";
 const Items = (props) => {
 
     const [items , setItems] = useState([])
+    const [message , setMessage] = useState(null)
     function getItems (){
         axios
         .get(`http://localhost:4000/home`)
@@ -31,9 +32,31 @@ const Items = (props) => {
         // }
     })
 
+    let deleteItem = (id)=> {
+        let token = localStorage.token
+        if (token){
+     axios.delete(`http://localhost:4000/home/${id}/delete`, {
+         headers: {token}
+     })
+     .then(msg => console.log("deleted"))
+     .catch(err => {
+         setMessage(err.response.data.message)
+         setTimeout(() => {
+            setMessage(null)
+         },2000);
+        console.log(err.response)}
+     )
+        }
+        console.log(localStorage.token)
+    //      axios.delete(`http://localhost:4000/home/${id}/delete`)
+    //  .then(msg => console.log("deleted"))
+    //  .catch(err => console.log("somthing went wrong"))
+     }
+
 
     return (
       <div>
+          {message ? <div>{message}</div>:null}
         <Row className="mt-0">
             <Col className="mt-0"> 
                 {/* <Image
@@ -44,7 +67,7 @@ const Items = (props) => {
                 <h3>First slide label</h3>
                 <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p> */}
                 <Card className="text-black" id="borderstyle" fluid >
-                    <Card.Img id="borderstyle" height={597} src="https://image.freepik.com/free-photo/food-delivery-concept-lunch-container_82893-14596.jpg" alt="Card image" />
+                    <Card.Img id="borderstyle" height={600} src="https://i.pinimg.com/564x/15/c6/89/15c6890a3d14b12073ed407be2de7c13.jpg" alt="Card image" />
                     <Card.ImgOverlay className="fixposition" >
                         <Card.Title className="text-light">!Waste</Card.Title>
                         <Card.Text className="text-light">
@@ -72,23 +95,23 @@ const Items = (props) => {
         </Row>
         <Container className="mt-5" fluid>
             <Row className="mt-5 justify-content-center">{items.map(item => 
-            <>
-                       
-                                           
+            <>                         
                 <Col md={4} className="mt-5">
 
-                <Card className="mt-5" style={{ width: '18rem' }}>
-                    <Card.Img variant="top" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22286%22%20height%3D%22180%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20286%20180%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_17194394b57%20text%20%7B%20fill%3A%23999%3Bfont-weight%3Anormal%3Bfont-family%3A-apple-system%2CBlinkMacSystemFont%2C%26quot%3BSegoe%20UI%26quot%3B%2CRoboto%2C%26quot%3BHelvetica%20Neue%26quot%3B%2CArial%2C%26quot%3BNoto%20Sans%26quot%3B%2Csans-serif%2C%26quot%3BApple%20Color%20Emoji%26quot%3B%2C%26quot%3BSegoe%20UI%20Emoji%26quot%3B%2C%26quot%3BSegoe%20UI%20Symbol%26quot%3B%2C%26quot%3BNoto%20Color%20Emoji%26quot%3B%2C%20monospace%3Bfont-size%3A14pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_17194394b57%22%3E%3Crect%20width%3D%22286%22%20height%3D%22180%22%20fill%3D%22%23373940%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22108.5390625%22%20y%3D%2297.5%22%3E286x180%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" />
-                    <Card.Body>
-                    <Card.Title>{item.name}</Card.Title>
-                    <Card.Text>
-                        exp 06/22
-                    </Card.Text>
-                    <Button as ={Link} variant="primary" to={`/items/${item._id}`}>More info</Button>
-                    </Card.Body>
+
+                <Card className="text-center" bg={"dark"} text={'light'} style={{ width: '18rem' }} >
+                 <Card.Img variant="top" src={item.image} />              
+                  <Card.Body> <Card.Title> {item.name} </Card.Title>
+               <Card.Text>
+               {item.expiration_date} 
+                </Card.Text>
+                <Button as ={Link} variant="primary" to={`/items/${item._id}`}>More info</Button>
+                 <Button onClick={()=> deleteItem(item._id)} variant="primary" >Delete</Button>
+                </Card.Body>
                 </Card>
-                
+
                 </Col>
+                
                 
                 </>)}
             </Row>
