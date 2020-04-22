@@ -28,7 +28,7 @@ export const SingUp = (props) => {
     }
 //==================================================
     return (
-        <>
+        <div className="logout-component">
             {register && <Alert variant={"danger"}>
               the email used . plz change the email 
             </Alert> }
@@ -58,6 +58,6 @@ export const SingUp = (props) => {
                     </Col>
                 </Row>
             </Form>
-        </>
+        </div>
     )
 }

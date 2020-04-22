@@ -3,8 +3,6 @@ import { Container, Row, Col, Card } from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faLinkedin , faGithub }  from '@fortawesome/free-brands-svg-icons'
 
-
-
 export default function About() {
     return (
        

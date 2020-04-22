@@ -84,7 +84,7 @@ export default class Profile extends Component {
   render() {
       console.log(this.state);
     return (
-      <div>
+      <div id="prof">
         <Container>
         {this.state.user && <Image roundedCircle src = {this.state.image} />}
           <Form.Group>

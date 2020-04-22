@@ -2,13 +2,11 @@ body {
   background: #FFF;
   overflow-x: hidden;
 }
-
 #copyright{
   width: 100%;
   /* margin-left: 50%; */
   text-align: center;
 }
-
 #about{
   text-align: center;
   font-family: Georgia, 'Times New Roman', Times, serif;
@@ -16,37 +14,50 @@ body {
   padding-top: 20px;
   color:white
 }
-
 #p{
   text-align: center;
   font-family: Georgia, 'Times New Roman', Times, serif;
   padding-top: 20px;
   color: white;
-
 }
-
 #contact{
   text-align: center;
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-style: bold;
   padding-top: 20px;
   color: white;
-  
 }
-
 #aboutpage{
   background-image: url(https://i.pinimg.com/564x/71/f9/eb/71f9eb8ba33e1de57673b9cc40e7384d.jpg);
   background-size: cover;
+  height: 90vh;
 }
-
+.logout-component{
+  background-image: url(https://i.pinimg.com/564x/71/f9/eb/71f9eb8ba33e1de57673b9cc40e7384d.jpg);
+  background-size: cover;
+  height: 90vh;
+  padding-top: 15%;
+}
 .login-component{
   background-image: url(https://i.pinimg.com/564x/71/f9/eb/71f9eb8ba33e1de57673b9cc40e7384d.jpg);
   background-size: cover;
-  
-
+  height: 90vh;
+  padding-top: 20%;
 }
-
 #itemspage{
-  background-image: url(https://i.pinimg.com/564x/71/f9/eb/71f9eb8ba33e1de57673b9cc40e7384d.jpg);
-  background-size: cover;
+  margin-top: 7.2%;
+}
+#prof{
+  margin-top: 10%;
+  margin-bottom: 26%;
+}
+#footer{
+  background-color: rgb(142, 148, 167);
+  color: white;
+  position: relative;
+  height: 50px;
+  margin-top: 10%;
+  clear: both;
+  text-align: center;
+  padding-top: 15px;
 }
