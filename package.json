@@ -21,6 +21,10 @@
     "jsonwebtoken": "^8.5.1",
     "jwt-decode": "^2.2.0",
     "mongoose": "^5.9.9",
+
+    "react-moment": "^0.9.7"
+
     "reactstrap": "^8.4.1"
+
   }
 }
