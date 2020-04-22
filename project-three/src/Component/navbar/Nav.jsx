@@ -5,30 +5,34 @@ import '../../index.css'
 import logo from '../../logo.png'
 
 const Nave = (props) => {
-  console.log(props.user)
+  console.log(props)
     return (
       <div>
         <Navbar className="color-nav" variant="light" sticky="top">
           <Nav className="mr-auto">
             <Image width={120} height={100} src={logo}/>
-            <Nav.Link as={Link} to="/home">
+            <Nav.Link as={Link} to="/items">
               Home
             </Nav.Link>
             <Nav.Link as={Link} to="/about">
               About
             </Nav.Link>
           </Nav>
-           <Nav> {!props.user  ?
+          <Nav> {!props.isLogin ?
            <>
-            <Nav.Link as={Link} to="/login">
+            <Nav.Link as={Link} to="/signin">
               Login
             </Nav.Link>
             <Nav.Link as={Link} to="/signup">
               Signup
             </Nav.Link>
-            </>:<Nav.Link as={Link} to= {`/profile/${props.user._id}`}>
-              Profile
-            </Nav.Link>}
+            </>:<> <Nav.Link as={Link} to= {`/profile/${props.user._id}`}>
+              {props.user.name}
+            </Nav.Link>
+            <Nav.Link as={Link} to={'/logout'} onClick={props.logOut}>
+              Log out
+            </Nav.Link>
+            </>}
           </Nav>
         </Navbar>
       </div>

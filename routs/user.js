@@ -86,7 +86,7 @@ router.put("/profile/:id", (req, res) => {
   .catch(err => {
   res.status(400).json({messge: "can not update"})
 })
-  });
+  })
 });
 
 

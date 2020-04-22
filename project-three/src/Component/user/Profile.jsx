@@ -1,10 +1,14 @@
 import React, { Component}  from "react";
-import { Form, Container, Button } from "react-bootstrap";
+import { Form, Container, Button, Image } from "react-bootstrap";
 import axios from "axios";
-
+// import {storage} from "./firebase/firebase"
+import {storage} from "../../firebase/firebase"
 
 export default class Profile extends Component {
-    state={ user : null }
+    state={ user : null ,
+            image : ""
+          }
+
 
   getUser = async(e) => {
     try {
@@ -12,7 +16,8 @@ export default class Profile extends Component {
           `http://localhost:4000/profile/${this.props.match.params.id}`
         );
         this.setState({
-            user: data.data.user
+            user: data.data.user,
+            image: data.data.user.image
         })
       } catch (err) {
         console.log(err.response);
@@ -44,25 +49,62 @@ export default class Profile extends Component {
   componentDidMount(){
       this.getUser()
   }
+
+  handleImageAsFile = (e) => {
+    const image = e.target.files[0]
+    // setImageAsFile(imageFile => (image))
+  //   e.preventDefault()
+  console.log('start of upload')
+  // async magic goes here...
+  let imageAsFile = image
+  if(imageAsFile === '') {
+
+    console.error(`not an image, the image file is a ${typeof(imageAsFile)}`)
+  }
+  const uploadTask = storage.ref(`/images/${imageAsFile.name}`).put(image)
+  //initiates the firebase side uploading 
+  uploadTask.on('state_changed', 
+  (snapShot) => {
+    //takes a snap shot of the process as it is happening
+    console.log(snapShot)
+  }, (err) => {
+    //catches the errors
+    console.log(err)
+  }, () => {
+    // gets the functions from storage refences the image storage in firebase by the children
+    // gets the download url then sets the image from firebase as the value for the imgUrl key:
+    storage.ref('images').child(imageAsFile.name).getDownloadURL()
+     .then(fireBaseUrl => {
+      //  setImageAsUrl({image: fireBaseUrl})
+       console.log(fireBaseUrl)
+       this.setState({ ...this.state, image: fireBaseUrl })
+     })
+  })
+}
   render() {
       console.log(this.state);
     return (
       <div>
         <Container>
+        {this.state.user && <Image roundedCircle src = {this.state.image} />}
           <Form.Group>
             <Form.Label>Name</Form.Label>
             <Form.Control onChange={this.changeHandler} name="name" value = {this.state.user ? this.state.user.name : ""}/>
           </Form.Group>
           <Form.Group>
             <Form.Label>prfile picture</Form.Label>
-            <Form.Control onChange={this.changeHandler} name="image" />
+            <Form.File 
+                                 id="custom-file"
+                                  label="Custom file input"
+                                  custom type="file"
+                                  onChange={(e) => this.handleImageAsFile(e)}
+                                    /> 
           </Form.Group>
-          
           <Button variant="primary" type="submit" onClick={this.updateHandler} block>
             Submit
           </Button>
         </Container>
       </div>
-    );
+    )
   }
-}
+};

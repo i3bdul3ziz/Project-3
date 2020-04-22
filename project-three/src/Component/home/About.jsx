@@ -9,7 +9,10 @@ export default function About() {
             <div>
                 <h1>About </h1>
 
-                
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
+                  Inventore unde commodi iste quidem quo quas officiis animi rem? 
+                  Doloremque eveniet atque sequi tenetur. Vel quis ab in, ullam saepe nam.
+                </p>
               
 
                 <h2>contact us</h2>
