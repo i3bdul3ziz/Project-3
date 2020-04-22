@@ -61,7 +61,7 @@ export default class App extends Component {
       <Switch>
         <Route exact path="/home" render={()=> <Home />} />
         <Route path="/about" component={About}/>
-        <Route path="/home/create" component={CreateItem}/>
+        <Route exact path="/home/create" component={CreateItem}/>
         <Route path="/profile/:id" component={Profile}/>
         <Route path= '/signin' render ={ (props) => <Signin  {...props} userLogin = {this.userLogin}/>} />
         <Route path= '/signup' component ={SingUp} />
