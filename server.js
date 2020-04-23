@@ -10,7 +10,7 @@ const PORT = process.env.PORT||4000
 
 mongoose
   .connect(
-    "mongodb://localhost/project",
+    process.env.DB,
 
     { useUnifiedTopology: true, useNewUrlParser: true }
   )
