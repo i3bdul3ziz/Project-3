@@ -16,8 +16,10 @@ export default function Item (props) {
     const [item , setItem] = useState(null)
     const [comments , setComments] = useState([])
     const [addCom, setAddCom] = useState({})
-    let [latV, setLatV] = useState(0)
-    let [lngV, setLngV] = useState(0)
+    // let [latV, setLatV] = useState(0)
+    // let [lngV, setLngV] = useState(0)
+    const [latV, setLatV] = useState(21.5679);
+    const [lngV, setLngV] = useState(39.4364);
 
      
     let getOnItem = () => {
@@ -29,8 +31,10 @@ export default function Item (props) {
         )
         .then(res =>{
             setItem (res.data.item)
+            if (res.data.item.lat !=null && res.data.item.long !=null){
             setLatV(parseFloat(res.data.item.lat))
             setLngV(parseFloat(res.data.item.lng))
+            }
             setComments(res.data.item.comments)
         })
         .catch(err => console.log(err))
@@ -56,8 +60,8 @@ export default function Item (props) {
 
     const Marker = () => <Image width={20} height={20} src={markerPath} />
 
-    latV = parseFloat(latV)
-    lngV = parseFloat(lngV)
+    // latV = parseFloat(latV)
+    // lngV = parseFloat(lngV)
 
     const defaultProps = {
         center: {
