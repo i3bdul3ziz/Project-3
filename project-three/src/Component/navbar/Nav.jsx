@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import { Navbar, Nav, Image } from "react-bootstrap";
+import React from "react";
+import { Navbar, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom"
 import '../../index.css'
-import logo from '../../logo.png'
+// import logo from '../../logo.png'
 
 const Nave = (props) => {
   console.log(props)

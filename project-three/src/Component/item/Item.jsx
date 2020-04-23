@@ -21,7 +21,7 @@ export default function Item (props) {
 
      
     let getOnItem = () => {
-        Axios.get(`http://localhost:4000/home/${props.match.params.id}`, {
+        Axios.get(`/api/home/${props.match.params.id}`, {
             headers: {
                 "token": localStorage.getItem("token"),
             },
@@ -29,8 +29,8 @@ export default function Item (props) {
         )
         .then(res =>{
             setItem (res.data.item)
-            setLatV(parseInt(res.data.item.lat))
-            setLngV(parseInt(res.data.item.lng))
+            setLatV(parseFloat(res.data.item.lat))
+            setLngV(parseFloat(res.data.item.lng))
             setComments(res.data.item.comments)
         })
         .catch(err => console.log(err))
@@ -56,13 +56,13 @@ export default function Item (props) {
 
     const Marker = () => <Image width={20} height={20} src={markerPath} />
 
-    latV = parseInt(latV)
-    lngV = parseInt(lngV)
+    latV = parseFloat(latV)
+    lngV = parseFloat(lngV)
 
     const defaultProps = {
         center: {
-        lat: parseInt(latV),
-        lng: parseInt(lngV)
+        lat: parseFloat(latV),
+        lng: parseFloat(lngV)
         },
         zoom: 11
     }
