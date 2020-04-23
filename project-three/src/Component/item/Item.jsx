@@ -42,7 +42,7 @@ export default function Item (props) {
 
     let postComment = (e) => {
         e.preventDefault()
-        Axios.post(`http://localhost:4000/home/${props.match.params.id}`, addCom)
+        Axios.post(`/api/home/${props.match.params.id}`, addCom)
         .then(res =>{
             props.history.push(`/items/${props.match.params.id}`)
         })

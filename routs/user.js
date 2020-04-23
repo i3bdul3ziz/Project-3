@@ -42,7 +42,7 @@ router.post("/signin", (req, res) => {
         if (bcrypt.compareSync(Signin.password, user.password)) {
           user.password = undefined;
           let payload =  { user }
-          let token = jwt.sign(payload, "SECRET", { expiresIn: 1500 });
+          let token = jwt.sign(payload, "SECRET", { expiresIn: 150000000000000000 });
 
           res.json({ token, Signin: true });
         } else {

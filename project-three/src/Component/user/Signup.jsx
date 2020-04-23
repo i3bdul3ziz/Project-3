@@ -13,7 +13,7 @@ export const SingUp = (props) => {
     // to add the user info to database
     let onSubmit = (e) => {
         e.preventDefault()
-        Axios.post('http://localhost:4000/signup', user)
+        Axios.post('/api/signup', user)
             .then(res => {
                     if (res.data.register){
                         props.history.push('/signin')

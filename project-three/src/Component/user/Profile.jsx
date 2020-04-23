@@ -13,7 +13,7 @@ export default class Profile extends Component {
   getUser = async(e) => {
     try {
         let data = await axios.get(
-          `http://localhost:4000/profile/${this.props.match.params.id}`
+          `/api/profile/${this.props.match.params.id}`
         );
         this.setState({
             user: data.data.user,

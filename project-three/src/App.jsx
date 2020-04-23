@@ -49,14 +49,13 @@ export default class App extends Component {
         user : user , 
         isLogin:true
       })
-      }else {
+      // }else {
   
-        this.setState({
-          user : null , 
-          isLogin:false
-        })
-      }
-  
+      //   this.setState({
+      //     user : null , 
+      //     isLogin:false
+      //   })
+       }
   }
     render() {
   console.log(this.state.user)

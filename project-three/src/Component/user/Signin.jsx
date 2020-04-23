@@ -15,7 +15,7 @@ useEffect(() => {
 
     let onSubmit = (e) => {
         e.preventDefault()
-        Axios.post('http://localhost:4000/signin', signin)
+        Axios.post('/api/signin', signin)
         .then(res =>{
             if (res.data.token ){
 
