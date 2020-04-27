@@ -1,16 +1,14 @@
-import React, { useState, useEffect } from 'react'
-import { Row, Form, Col, Button, Alert, Image, FormFile } from 'react-bootstrap'
+import React, { useState } from 'react'
+import { Row, Form, Col, Button } from 'react-bootstrap'
 import '../../index.css'
 import Axios from 'axios'
 import TimePicker from 'react-time-picker'
 import GoogleMapReact from 'google-map-react'
-import markerPath from '../../hiclipart.com.png'
 import {storage} from "../../firebase/firebase"
 
 export const CreateItem = (props) => {
     const [item, setItem] = useState({})// item info
 
-    // const [register , setRegister] = useState(false) // to show aleart
     const [imageAsFile, setImageAsFile] = useState('')
     const [imageAsUrl, setImageAsUrl] = useState({imgUrl: ''})
 
@@ -27,10 +25,10 @@ export const CreateItem = (props) => {
     // to add the item info to database
     let onSubmit = (e) => {
         e.preventDefault()
-        Axios.post('/api/home/create', item , {headers: {
+        Axios.post('http://localhost:4000/home/create', item , {headers: {
             "token": localStorage.getItem("token"),
           },
-        } )
+        })
             .then(res => {
                 props.history.push('/items')
             })
@@ -48,8 +46,9 @@ export const CreateItem = (props) => {
 
     function getLatLng({lat, lng}){
         setItem({ ...item, "lat": lat, "lng": lng})
+        console.log("lat: " + lat)
+        console.log("lng: " + lng)
     }
-    console.log(imageAsFile)
  const handleImageAsFile = (e) => {
       const image = e.target.files[0]
       setImageAsFile(imageFile => (image))
@@ -67,14 +66,13 @@ export const CreateItem = (props) => {
       console.log(snapShot)
     }, (err) => {
       //catches the errors
-      console.log(err)
     }, () => {
       // gets the functions from storage refences the image storage in firebase by the children
       // gets the download url then sets the image from firebase as the value for the imgUrl key:
       storage.ref('images').child(imageAsFile.name).getDownloadURL()
        .then(fireBaseUrl => {
+           console.log(fireBaseUrl)
          setImageAsUrl({image: fireBaseUrl})
-         console.log(fireBaseUrl)
          setItem({ ...item, image: fireBaseUrl })
        })
     })
@@ -102,12 +100,12 @@ export const CreateItem = (props) => {
                                   label="Custom file input"
                                   custom type="file"
                                   onChange={(e) => handleImageAsFile(e)}
-                                    /> 
+                                    />
                             </Col>
                         </Form.Row>
                         <Form.Row className="my-4">
                             <Col md={12}>
-                                <Form.Group controlId="date" bsSize="large">
+                                <Form.Group controlId="date">
                                 <Form.Label>Exp Date</Form.Label>
                                 <Form.Control
                                     type="date"

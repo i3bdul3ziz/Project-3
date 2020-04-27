@@ -10,7 +10,7 @@ router.post("/signup", (req, res) => {
     email: req.body.email,
     password: req.body.password,
   };
-  console.log(newUser);
+  
   User.findOne({ email: newUser.email })
     .then((user) => {
       console.log("newUers inside findone");
@@ -42,7 +42,7 @@ router.post("/signin", (req, res) => {
         if (bcrypt.compareSync(Signin.password, user.password)) {
           user.password = undefined;
           let payload =  { user }
-          let token = jwt.sign(payload, "SECRET", { expiresIn: 150000000000000000 });
+          let token = jwt.sign(payload, "SECRET");
 
           res.json({ token, Signin: true });
         } else {
@@ -88,19 +88,4 @@ router.put("/profile/:id", (req, res) => {
 })
   })
 });
-
-
-// router.post("/update", async (req, res) => {
-//   // console.log(req.user);
-//   let {_id, first_name} = req.body;
-//   try {
-//     let user = await User.findByIdAndUpdate(_id, {"first_name": first_name});
-//     if (!user) throw error; 
-//     let userSaved = await user.save();
-//     res.json({ user: userSaved }).status(200);
-//   } catch (error) {
-//     res.status(400).json({ message: "something went wrong!" });
-//   }
-//   //
-// });
 module.exports = router;

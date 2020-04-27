@@ -1,19 +1,19 @@
 import React, { Component}  from "react";
 import { Form, Container, Button, Image } from "react-bootstrap";
 import axios from "axios";
-// import {storage} from "./firebase/firebase"
 import {storage} from "../../firebase/firebase"
 
 export default class Profile extends Component {
-    state={ user : null ,
-            image : ""
-          }
+    state = { 
+      user : null ,
+      image : ""
+    }
 
 
   getUser = async(e) => {
     try {
         let data = await axios.get(
-          `/api/profile/${this.props.match.params.id}`
+          `http://localhost:4000/profile/${this.props.match.params.id}`
         );
         this.setState({
             user: data.data.user,
@@ -24,10 +24,7 @@ export default class Profile extends Component {
       }
   }
   changeHandler = (e) => {
-    // console.log("name of field", e.target["name"]);
-    // console.log("value of field", e.target.value);
     let temp = { ...this.state }; //copy state object
-    // temp["_id"] = this.props.user._id
     temp[e.target.name] = e.target.value;
     
     this.setState(temp);
@@ -76,7 +73,6 @@ export default class Profile extends Component {
     storage.ref('images').child(imageAsFile.name).getDownloadURL()
      .then(fireBaseUrl => {
       //  setImageAsUrl({image: fireBaseUrl})
-       console.log(fireBaseUrl)
        this.setState({ ...this.state, image: fireBaseUrl })
      })
   })
@@ -94,14 +90,14 @@ export default class Profile extends Component {
           <Form.Group>
             <Form.Label>prfile picture</Form.Label>
             <Form.File 
-                                 id="custom-file"
-                                  label="Custom file input"
-                                  custom type="file"
-                                  onChange={(e) => this.handleImageAsFile(e)}
-                                    /> 
+              id="custom-file"
+              label="Custom file input"
+              custom type="file"
+              onChange={(e) => this.handleImageAsFile(e)}
+            />
           </Form.Group>
           <Button variant="primary" type="submit" onClick={this.updateHandler} block>
-            Submit
+            Update
           </Button>
         </Container>
       </div>

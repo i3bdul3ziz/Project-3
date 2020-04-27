@@ -10,12 +10,11 @@ const [signin , setSignin] = useState({})
         setSignin({ ...signin, [name]: value })
     }
 useEffect(() => {
-    console.log(signin)
 })
 
     let onSubmit = (e) => {
         e.preventDefault()
-        Axios.post('/api/signin', signin)
+        Axios.post('http://localhost:4000/signin', signin)
         .then(res =>{
             if (res.data.token ){
 
@@ -23,7 +22,6 @@ useEffect(() => {
                 props.userLogin()
                 props.history.push('/items')
             }else {
-
                 console.log("email or password is not correct")
             }
             

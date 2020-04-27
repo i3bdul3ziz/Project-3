@@ -11,7 +11,7 @@ const Items = (props) => {
     const [message , setMessage] = useState(null)
     function getItems (){
         axios
-        .get(`/api/home`)
+        .get(`http://localhost:4000/home`)
         .then((res) => {
           setItems(res.data.items)
         })
@@ -20,38 +20,24 @@ const Items = (props) => {
 
     
     useEffect(() => {
-
     getItems()
-        // this.axiosCancelSource = axios.CancelToken.source();
-    
-    
-        // return () => {
-        //     // console.log("unmount component");
-        //     // //cancel all axios subsciptions
-        //     // this.axiosCancelSource.cancel("Component unmounted.");
-        // }
     })
 
     let deleteItem = (id)=> {
         let token = localStorage.token
         if (token){
-     axios.delete(`/api/home/${id}/delete`, {
-         headers: {token}
-     })
-     .then(msg => console.log("deleted"))
-     .catch(err => {
-         setMessage(err.response.data.message)
-         setTimeout(() => {
-            setMessage(null)
-         },2000);
-        console.log(err.response)}
-     )
+            axios.delete(`http://localhost:4000/home/${id}/delete`, {
+                headers: {token}
+            })
+            .then(msg => console.log("deleted"))
+            .catch(err => {
+                setMessage(err.response.data.message)
+                setTimeout(() => {
+                    setMessage(null)
+                },2000);
+            })
         }
-        console.log(localStorage.token)
-    //      axios.delete(`http://localhost:4000/home/${id}/delete`)
-    //  .then(msg => console.log("deleted"))
-    //  .catch(err => console.log("somthing went wrong"))
-     }
+    }
 
 
     return (
@@ -59,13 +45,6 @@ const Items = (props) => {
           {message ? <div>{message}</div>:null}
         <Row className="mt-0">
             <Col className="mt-0"> 
-                {/* <Image
-                className="d-block w-100"
-                src="https://envato-shoebox-0.imgix.net/2103/0ab1-92e8-4b34-a111-2edc23491222/food7_b267.jpg?auto=compress%2Cformat&fit=max&mark=https%3A%2F%2Felements-assets.envato.com%2Fstatic%2Fwatermark2.png&markalign=center%2Cmiddle&markalpha=18&w=800&s=fa73555be8fe405d7e67f33bcfdbc3ef"
-                fluid
-                />
-                <h3>First slide label</h3>
-                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p> */}
                 <Card className="text-black" id="borderstyle"  >
                     <Card.Img id="borderstyle" height={600} src="https://i.pinimg.com/564x/15/c6/89/15c6890a3d14b12073ed407be2de7c13.jpg" alt="Card image" />
                     <Card.ImgOverlay className="fixposition" >
@@ -95,10 +74,7 @@ const Items = (props) => {
         </Row>
         <Container className="mt-5" fluid>
             <Row className="mt-5 justify-content-center">{items.map(item => 
-                                   
                 <Col md={4} className="mt-5" key={item._id}>
-
-
                 <Card className="text-center" bg={"dark"} text={'light'}  >
                  <Card.Img variant="top" src={item.image} />              
                   <Card.Body> <Card.Title> {item.name} </Card.Title>
@@ -109,10 +85,7 @@ const Items = (props) => {
                  <Button onClick={()=> deleteItem(item._id)} variant="primary" >Delete</Button>
                 </Card.Body>
                 </Card>
-
                 </Col>
-                
-                
                 )}
             </Row>
         </Container>

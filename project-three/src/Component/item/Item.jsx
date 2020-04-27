@@ -9,21 +9,16 @@ import { decode } from "jsonwebtoken";
 
 
 
-// import {storage} from "./firebase/firebase"
-
-
 export default function Item (props) {
     const [item , setItem] = useState(null)
     const [comments , setComments] = useState([])
     const [addCom, setAddCom] = useState({})
-    // let [latV, setLatV] = useState(0)
-    // let [lngV, setLngV] = useState(0)
-    const [latV, setLatV] = useState(21.5679);
-    const [lngV, setLngV] = useState(39.4364);
+    const [latV, setLatV] = useState(parseFloat(23.8859));
+    const [lngV, setLngV] = useState(parseFloat(45.0792));
 
      
     let getOnItem = () => {
-        Axios.get(`/api/home/${props.match.params.id}`, {
+        Axios.get(`http://localhost:4000/home/${props.match.params.id}`, {
             headers: {
                 "token": localStorage.getItem("token"),
             },
@@ -31,9 +26,11 @@ export default function Item (props) {
         )
         .then(res =>{
             setItem (res.data.item)
-            if (res.data.item.lat !=null && res.data.item.long !=null){
+            if (res.data.item.lat !=null && res.data.item.lng !=null){
+                // console.log("!=")
             setLatV(parseFloat(res.data.item.lat))
             setLngV(parseFloat(res.data.item.lng))
+
             }
             setComments(res.data.item.comments)
         })
@@ -46,13 +43,16 @@ export default function Item (props) {
 
     let postComment = (e) => {
         e.preventDefault()
-        Axios.post(`/api/home/${props.match.params.id}`, addCom)
+        Axios.post(`http://localhost:4000/home/${props.match.params.id}`, addCom,  {
+            headers: {
+                "token": localStorage.getItem("token"),
+            },
+        })
         .then(res =>{
             props.history.push(`/items/${props.match.params.id}`)
         })
         .catch(err => console.log(err))
     }
-
 
     useEffect(() => {
         getOnItem()
@@ -60,21 +60,19 @@ export default function Item (props) {
 
     const Marker = () => <Image width={20} height={20} src={markerPath} />
 
-    // latV = parseFloat(latV)
-    // lngV = parseFloat(lngV)
-
     const defaultProps = {
         center: {
         lat: parseFloat(latV),
         lng: parseFloat(lngV)
         },
-        zoom: 11
+        zoom: 15
     }
+    // console.log(defaultProps.center.lat)
     // console.log(decode(localStorage.token))
     let allComments = comments.map(comment => 
         ( 
         <Comment>
-          <Comment.Avatar src='https://react.semantic-ui.com/images/avatar/small/matt.jpg' />
+          <Comment.Avatar src= {comment.user.image?comment.user.image:'https://react.semantic-ui.com/images/avatar/small/matt.jpg'} />
           <Comment.Content>
             <Comment.Author as='a'>{comment.user.name}</Comment.Author>
             <Comment.Metadata>
@@ -99,8 +97,8 @@ export default function Item (props) {
                   <h4>{item.expiration_date}</h4>
                   <h4>Time to Pick : {item.time_from} - {item.time_till}</h4>
                   {item.isAvailable?
-                  item.user == decode(localStorage.token).user._id?
-                  "you can not pick you item !!":
+                  item.user === decode(localStorage.token).user._id?
+                  "you can not pick your item !!":
                   <Button variant="primary" type="submit"> Pick it </Button> 
                   :
                   "not available for you"}
@@ -113,8 +111,8 @@ export default function Item (props) {
                     defaultZoom={defaultProps.zoom}
                     >
                         <Marker
-                            lat={latV}
-                            lng={lngV}
+                            lat={parseFloat(latV)}
+                            lng={parseFloat(lngV)}
                         />
                     </GoogleMapReact>
                 </div>
