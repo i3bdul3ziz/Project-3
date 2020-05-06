@@ -6,28 +6,31 @@ import '../../index.css'
 const Nave = (props) => {
     return (
       <div>
-        <Navbar className="color-nav" variant="light" sticky="top">
+        <Navbar className="color-nav" sticky="top">
           <Nav className="mr-auto">
-            <Navbar.Brand >! Waste</Navbar.Brand>
-            <Nav.Link as={Link} to="/items">
+            <Navbar.Brand className="color-nav" >! Waste</Navbar.Brand>
+            <Nav.Link className="color-nav" as={Link} to="/">
               Home
             </Nav.Link>
-            <Nav.Link as={Link} to="/about">
+            <Nav.Link className="color-nav" as={Link} to="/items">
+              All Items
+            </Nav.Link>
+            <Nav.Link className="color-nav" as={Link} to="/about">
               Contact
             </Nav.Link>
           </Nav>
           <Nav> {!props.user ?
            <>
-            <Nav.Link as={Link} to="/signin">
+            <Nav.Link className="color-nav" as={Link} to="/signin">
               Login
             </Nav.Link>
-            <Nav.Link as={Link} to="/signup">
+            <Nav.Link className="color-nav" as={Link} to="/signup">
               Signup
             </Nav.Link>
-            </>:<> <Nav.Link as={Link} to= {`/profile/${props.user._id}`}>
+            </>:<> <Nav.Link className="color-nav" as={Link} to= {`/profile/${props.user._id}`}>
               {props.user.name}
             </Nav.Link>
-            <Nav.Link as={Link} to={'/logout'} onClick={props.logOut}>
+            <Nav.Link className="color-nav" as={Link} to={'/logout'} onClick={props.logOut}>
               Log out
             </Nav.Link>
             </>}

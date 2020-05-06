@@ -3,11 +3,9 @@ import { Container, Row, Col} from "react-bootstrap";
 import axios from "axios";
 import '../../index.css'
 import Header from '../header/Header.jsx'
-import { NavLink } from "react-router-dom";
-import ProfileCard from '../profile cards/ProfileCards.jsx'
 
 
-const Items = (props) => {
+const AllItems = (props) => {
 
     const [items , setItems] = useState([])
     const [message , setMessage] = useState(null)
@@ -41,8 +39,8 @@ const Items = (props) => {
         }
     }
 
-    let latestItems =
-    <Row className="mt-5">{items.slice(0, 2).map(item => 
+    let aItems = 
+    <Row className="mt-5">{items.map(item => 
         <Col md={4} className="my-5" key={item._id}>
             <div class="item_card transition">
                 <h2 class="transition">{item.name}<br></br><small>{item.expiration_date}</small></h2>
@@ -52,44 +50,21 @@ const Items = (props) => {
         </Col>
     )}</Row>
 
+
     return (
       <div>
           {message ? <div>{message}</div>:null}
         <Header isLogin={props.isLogin}/>
         <Container className="mt-5" fluid>
-            {/* <Row className="mt-5 justify-content-center">{items.slice(0, 2).map(item =>  */}
-               {/*  <Col md={4} className="mt-5" key={item._id}>
-                <Card className="text-center" bg={"dark"} text={'light'}  >
-                 <Card.Img variant="top" src={item.image} />              
-                  <Card.Body> <Card.Title> {item.name} </Card.Title>
-               <Card.Text>
-               {item.expiration_date} 
-                </Card.Text>
-                <Button as ={Link} variant="primary" to={`/items/${item._id}`}>More info</Button>
-                 <Button onClick={()=> deleteItem(item._id)} variant="primary" >Delete</Button>
-                </Card.Body>
-                </Card>
-                </Col>
-                )}
-            </Row> */}
             <Row className="sectionTitles justify-content-center">
                 <h3>
-                    Latest Items
+                    All Items
                 </h3>
             </Row>
-            {latestItems}
-            <Row>
-            <NavLink
-                    to={'/items'}
-                    className="moreButton">
-                        See More...
-            </NavLink>
-            </Row>
-            <ProfileCard/>
-
+            {aItems}
         </Container>
       </div>
     );
 }
 
-export default Items
+export default AllItems

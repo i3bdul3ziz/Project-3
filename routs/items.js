@@ -25,7 +25,8 @@ router.post("/home/create", isLoggedIn, (req, res) => {
     time_from: req.body.time_from,
     time_till: req.body.time_till,
     lat:req.body.lat,
-    lng: req.body.lng
+    lng: req.body.lng,
+    isAvailble : true
   };
   let item = new Item(newItem);
   item
@@ -61,7 +62,7 @@ router.get("/home/:id",isLoggedIn ,async (req, res) => {
   }
 });
 
-router.post('/home/:id', isLoggedIn, (req, res) => {
+router.post('/home/:id/comment', isLoggedIn, (req, res) => {
   const newComment = {
     comment: req.body.comment,
     item: req.params.id,
@@ -85,6 +86,21 @@ router.post('/home/:id', isLoggedIn, (req, res) => {
           console.log(err)
       })
 
+})
+
+router.put('/home/:id/availble', isLoggedIn, (req, res) => {
+ let availble = {
+    isAvailble : false
+  }
+ Item.findByIdAndUpdate(req.params.id,{$set:availble} ,{
+  new : true
+})  
+.then(availble => {
+  res.json({edit :availble });
+})
+.catch(err => {
+  res.status(400).json({messge: "can not update"})
+})
 })
 
 router.put("/home/:id/edit", (req, res) => {
