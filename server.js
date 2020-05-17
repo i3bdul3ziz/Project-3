@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const authRoutes = require("./routs/user");
 const itemRoutes = require("./routs/items");
 const contactUsRoutes = require("./routs/contactUs");
+const path = require("path");
 const PORT = process.env.PORT||4000
 
 mongoose
@@ -25,8 +26,14 @@ app.use(express.urlencoded({ extended: false }));
 app.use('/api', itemRoutes);
 app.use('/api',authRoutes);
 
-app.get("/*", (req, res) => {
-  res.sendFile(path.join(__dirname, "build", "index.html"));
-});
+if(process.env.NODE_ENV === "production") {
+  // Set static folder 
+  app.use(express.static("project-three/build"));
+
+  app.get("/*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "project-three", "build", "index.html"));
+  });
+}
+
 
 app.listen(PORT, () => console.log("server run on 4000"));

@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "venus": "concurrently  \"nodemon server.js\" \"cd project-three && npm run start\""
+    "venus": "concurrently  \"nodemon server.js\" \"cd project-three && npm run start\"",
+    "heroku-postbuild" : "NPM_CONFIG_PRODUCTION=false npm install --prefix project-three && npm run build --prefix project-three"
   },
   "author": "",
   "license": "ISC",
