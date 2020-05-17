@@ -188,7 +188,7 @@ h2 small {
 }
 
 .authComment {
-  background-color: rgb(226, 226, 226);
+  background-color: rgb(97, 85, 85);
 }
 
 .textArea textarea {
@@ -249,22 +249,22 @@ div.backside a{
 }
 
 div.backside a.linked-in{
-  color: #0073b1;
+  color: #7e7e7e;
   transition: font-size 0.5s;
 }
 
 div.backside a.linked-in:hover{
-  color: #0090dd;
+  color: #6e6e6e;
   font-size: 20px;
 }
 
 div.backside a.github{
-  color: #fff;
+  color: #7e7e7e;
   transition: font-size 0.5s;
 }
 
 div.backside a.github:hover{
-  color: rgb(216, 216, 216);
+  color: #6e6e6e;
   font-size: 20px;
 }
 

@@ -96,7 +96,8 @@ router.put('/home/:id/availble', isLoggedIn, (req, res) => {
   new : true
 })  
 .then(availble => {
-  res.json({edit :availble });
+  res.status(200).json({edit :availble });
+  console.log("picked")
 })
 .catch(err => {
   res.status(400).json({messge: "can not update"})
