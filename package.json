@@ -9,10 +9,6 @@
     "venus": "concurrently  \"nodemon server.js\" \"cd project-three && npm run start\"",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix project-three && npm run build --prefix project-three"
   },
-  "engines": {
-    "npm": "5.6.0",
-    "node": "8.10.0"
-  },
   "author": "",
   "license": "ISC",
   "dependencies": {
