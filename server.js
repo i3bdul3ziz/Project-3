@@ -4,7 +4,6 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const authRoutes = require("./routs/user");
 const itemRoutes = require("./routs/items");
-const contactUsRoutes = require("./routs/contactUs");
 const path = require("path");
 const PORT = process.env.PORT||4000
 
