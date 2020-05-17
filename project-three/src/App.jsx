@@ -67,7 +67,6 @@ export default class App extends Component {
 
           <Route exact path="/" render={(props)=> <Home {...props} isLogin ={this.state.isLogin}/>} />
           <Route exact path="/items" render={(props)=> <AllItems {...props} isLogin ={this.state.isLogin}/>} />
-          <Route path="/about" component={About}/>
           <Route path= '/signin' render ={ (props) => <Signin  {...props} userLogin = {this.userLogin}/>} />
           <Route path= '/signup' component ={SingUp} />
           {this.state.isLogin ?<>  
