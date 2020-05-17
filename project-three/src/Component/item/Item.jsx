@@ -23,7 +23,7 @@ function Item(props) {
 
   
   let getOnItem = () => {
-    Axios.get(`http://localhost:4000/home/${props.match.params.id}`, {
+    Axios.get(`https://notwaste.herokuapp.com/api/home/${props.match.params.id}`, {
       headers: {
         token: localStorage.getItem("token"),
       },
@@ -43,7 +43,7 @@ function Item(props) {
   };
 
   let changeAvailble = () => {
-    Axios.put(`http://localhost:4000/home/${props.match.params.id}/availble`, {}, {
+    Axios.put(`https://notwaste.herokuapp.com/api/home/${props.match.params.id}/availble`, {}, {
       headers: {
         token: localStorage.getItem("token"),
       },
@@ -61,7 +61,7 @@ function Item(props) {
   let postComment = (e) => {
     e.preventDefault();
     Axios.post(
-      `http://localhost:4000/home/${props.match.params.id}/comment`,
+      `https://notwaste.herokuapp.com/api/home/${props.match.params.id}/comment`,
       addCom,
       {
         headers: {

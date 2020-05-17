@@ -13,7 +13,7 @@ export default class Profile extends Component {
   getUser = async(e) => {
     try {
         let data = await axios.get(
-          `http://localhost:4000/profile/${this.props.match.params.id}`
+          `https://notwaste.herokuapp.com/api/profile/${this.props.match.params.id}`
         );
         this.setState({
             user: data.data.user,
@@ -35,7 +35,7 @@ export default class Profile extends Component {
     console.log(this.state);
     try {
       let data = await axios.put(
-        `http://localhost:4000/profile/${this.props.match.params.id}`,
+        `https://notwaste.herokuapp.com/api/profile/${this.props.match.params.id}`,
         this.state
       );
       console.log(data);

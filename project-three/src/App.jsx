@@ -9,9 +9,7 @@ import { SingUp } from './Component/user/Signup.jsx';
 import { Signin } from './Component/user/Signin.jsx';
 import  Profile  from './Component/user/Profile';
 import { CreateItem } from './Component/item/CreateItem';
-import About from './Component/home/About';
 import jwt_decode from 'jwt-decode'
-import { decode } from "jsonwebtoken";
 import Item from './Component/item/Item';
 
 
@@ -60,7 +58,6 @@ export default class App extends Component {
       //  }
   }
     render() {
-      console.log(this.state.loading)
     return (
     <div>
       <Nave user={this.state.user} isLogin ={this.state.isLogin} userLogin = {this.userLogin} logOut={this.logoutHandler}/>

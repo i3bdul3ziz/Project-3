@@ -11,7 +11,7 @@ const AllItems = (props) => {
     const [message , setMessage] = useState(null)
     function getItems (){
         axios
-        .get(`http://localhost:4000/home`)
+        .get(`https://notwaste.herokuapp.com/api/home`)
         .then((res) => {
           setItems(res.data.items)
         })

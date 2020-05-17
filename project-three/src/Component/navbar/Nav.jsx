@@ -15,9 +15,6 @@ const Nave = (props) => {
             <Nav.Link className="color-nav" as={Link} to="/items">
               All Items
             </Nav.Link>
-            <Nav.Link className="color-nav" as={Link} to="/about">
-              Contact
-            </Nav.Link>
           </Nav>
           <Nav> {!props.user ?
            <>
