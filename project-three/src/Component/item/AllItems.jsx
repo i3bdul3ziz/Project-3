@@ -11,7 +11,7 @@ const AllItems = (props) => {
     const [message , setMessage] = useState(null)
     function getItems (){
         axios
-        .get(`/api/home`)
+        .get(`http://localhost:4000/api/home`)
         .then((res) => {
           setItems(res.data.items)
         })
@@ -26,7 +26,7 @@ const AllItems = (props) => {
     let deleteItem = (id)=> {
         let token = localStorage.token
         if (token){
-            axios.delete(`/api/home/${id}/delete`, {
+            axios.delete(`http://localhost:4000/api/home/${id}/delete`, {
                 headers: {token}
             })
             .then(msg => console.log("deleted"))
@@ -44,7 +44,7 @@ const AllItems = (props) => {
         <Col md={4} className="my-5" key={item._id}>
             <div class="item_card transition">
                 <h2 class="transition">{item.name}<br></br><small>{item.expiration_date}</small></h2>
-                <div class="cta-container transition"><a href={`/items/${item._id}`} class="cta">Details</a></div>
+                <div class="cta-container transition"><a href={`/item/${item._id}`} class="cta">Details</a></div>
                 <div class="card_circle transition" style={{backgroundImage: `url(${item.image})`}}></div>
             </div>
         </Col>

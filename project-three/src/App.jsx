@@ -3,27 +3,32 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import './App.css'
 import AllItems from './Component/item/AllItems.jsx';
 import Home from './Component/home/Home.jsx'
-import {Switch , Route, Redirect} from 'react-router-dom'
+import {Switch , Route, Redirect, withRouter} from 'react-router-dom'
 import Nave from './Component/navbar/Nav.jsx';
 import { SingUp } from './Component/user/Signup.jsx';
 import { Signin } from './Component/user/Signin.jsx';
 import  Profile  from './Component/user/Profile';
-import { CreateItem } from './Component/item/CreateItem';
+import CreateItem from './Component/item/CreateItem.jsx';
 import jwt_decode from 'jwt-decode'
-import Item from './Component/item/Item';
+import Item from './Component/item/Item.jsx';
 
 
 
-export default class App extends Component {
-
+class App extends Component {
+  constructor(props){
+    super(props);
+  }
   state = {
     user : null , 
     isLogin : false,
-    loading: false
+    loading: false,
+    geust: true
   }
   
   componentDidMount (){
-  
+    this.setState({
+      loading: true
+    });
     this.userLogin()
     
   }
@@ -35,7 +40,10 @@ export default class App extends Component {
     this.setState({
       user : null , 
       isLogin : false,
+      loading: true,
+      geust: true
     });
+    this.props.history.push("/")
   };
   
   
@@ -47,34 +55,43 @@ export default class App extends Component {
       this.setState({
         user : user , 
         isLogin:true,
-        loading: true
+        loading: true,
+        geust: false
       })
-       } //else {
-  
-      //   this.setState({
-      //     user : null , 
-      //     isLogin:false
-      //   })
-      //  }
+       }else {
+        this.setState({
+          user : null , 
+          isLogin:false,
+          loading: true,
+          geust: true
+        })
+       }
   }
     render() {
+      console.log(this.state.isLogin)
     return (
     <div>
       <Nave user={this.state.user} isLogin ={this.state.isLogin} userLogin = {this.userLogin} logOut={this.logoutHandler}/>
       
       <Switch>
-
+        {this.state.loading ? <>
           <Route exact path="/" render={(props)=> <Home {...props} isLogin ={this.state.isLogin}/>} />
           <Route exact path="/items" render={(props)=> <AllItems {...props} isLogin ={this.state.isLogin}/>} />
           <Route path= '/signin' render ={ (props) => <Signin  {...props} userLogin = {this.userLogin}/>} />
           <Route path= '/signup' component ={SingUp} />
-          {this.state.isLogin ?<>  
-          <Route exact path="/items/create" render={(props)=> <CreateItem {...props} user ={this.state.user} />} /> 
-          <Route path="/profile/:id" component={Profile}/>
-          <Route exact path='/items/:id' render={(props)=> <Item {...props} user ={this.state.user} />} /> </> 
-          :<>
-          <Redirect to="/signin" /> </>
+          {this.state.isLogin ? <>
+          <Route exact path="/items/create" component ={CreateItem} /> 
+          <Route exact path='/item/:id' component={Item} /> 
+          <Route path="/profile/:id" component={Profile}/></> 
+          :
+          <Redirect to="/signin" />
           }
+          }
+          </>
+          :
+          <h1>LOADING...</h1>
+        }
+          
 
       </Switch>
 
@@ -83,3 +100,5 @@ export default class App extends Component {
     )
   }
 }
+
+export default withRouter(App)
