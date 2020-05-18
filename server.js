@@ -31,9 +31,9 @@ if (process.env.NODE_ENV === "production") {
     res.sendFile(path.join(__dirname, "./project-three/build/index.html"));
   });
 } else {
-  app.use(express.static(path.join(__dirname, '/project-three/public')));
+  // app.use(express.static(path.join(__dirname, '/project-three/public')));
   app.get("/*", function(req, res) {
-    res.sendFile(path.join(__dirname, "./project-three/public/index.html"));
+    res.sendFile(path.join(__dirname, "./build/index.html"));
   });
 }
 

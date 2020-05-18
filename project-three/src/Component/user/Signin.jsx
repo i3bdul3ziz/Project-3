@@ -13,7 +13,7 @@ export const Signin = (props) => {
 
   let onSubmit = (e) => {
     e.preventDefault();
-    Axios.post("https://notwaste.herokuapp.com/api/signin", signin)
+    Axios.post("/api/signin", signin)
       .then((res) => {
         if (res.data.token) {
           localStorage.setItem("token", res.data.token);

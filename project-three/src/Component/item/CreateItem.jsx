@@ -24,7 +24,7 @@ export const CreateItem = (props) => {
   // to add the item info to database
   let onSubmit = (e) => {
     e.preventDefault();
-    Axios.post("https://notwaste.herokuapp.com/api/home/create", item, {
+    Axios.post("/api/home/create", item, {
       headers: {
         token: localStorage.getItem("token"),
       },
