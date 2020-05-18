@@ -13,7 +13,7 @@ const Home = (props) => {
     const [message , setMessage] = useState(null)
     function getItems (){
         axios
-        .get(`http://localhost:4000/api/home`)
+        .get(`/api/home`)
         .then((res) => {
           setItems(res.data.items)
         })
@@ -28,7 +28,7 @@ const Home = (props) => {
     let deleteItem = (id)=> {
         let token = localStorage.token
         if (token){
-            axios.delete(`http://localhost:4000/api/home/${id}/delete`, {
+            axios.delete(`/api/home/${id}/delete`, {
                 headers: {token}
             })
             .then(msg => console.log("deleted"))
