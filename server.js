@@ -25,16 +25,10 @@ app.use("/api", itemRoutes);
 app.use("/api", authRoutes);
 
 
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("project-three/build"));
-  app.get("/*", function(req, res) {
-    res.sendFile(path.join(__dirname, "./project-three/build/index.html"));
-  });
-} else {
+
   // app.use(express.static(path.join(__dirname, '/project-three/public')));
   app.get("/*", function(req, res) {
     res.sendFile(path.join(__dirname, "./build/index.html"));
   });
-}
 
 app.listen(PORT, () => console.log("server run on 4000"));

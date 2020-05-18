@@ -63,7 +63,6 @@ export default class App extends Component {
       <Nave user={this.state.user} isLogin ={this.state.isLogin} userLogin = {this.userLogin} logOut={this.logoutHandler}/>
       
       <Switch>
-        {this.state.loading && <>
 
           <Route exact path="/" render={(props)=> <Home {...props} isLogin ={this.state.isLogin}/>} />
           <Route exact path="/items" render={(props)=> <AllItems {...props} isLogin ={this.state.isLogin}/>} />
@@ -77,8 +76,6 @@ export default class App extends Component {
           <Redirect to="/signin" /> </>
           }
 
-          </>
-        }
       </Switch>
 
       <footer id="footer" > © 2020 , Made with <span>&#128420;</span> by Venus Team .</footer>
