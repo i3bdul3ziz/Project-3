@@ -22,7 +22,6 @@ class App extends Component {
     user : null , 
     isLogin : false,
     loading: false,
-    geust: true
   }
   
   componentDidMount (){
@@ -41,7 +40,6 @@ class App extends Component {
       user : null , 
       isLogin : false,
       loading: true,
-      geust: true
     });
     this.props.history.push("/")
   };
@@ -56,14 +54,12 @@ class App extends Component {
         user : user , 
         isLogin:true,
         loading: true,
-        geust: false
       })
        }else {
         this.setState({
           user : null , 
           isLogin:false,
           loading: true,
-          geust: true
         })
        }
   }
