@@ -71,7 +71,7 @@ export default class App extends Component {
           {this.state.isLogin ?<>  
           <Route exact path="/items/create" render={(props)=> <CreateItem {...props} user ={this.state.user} />} /> 
           <Route path="/profile/:id" component={Profile}/>
-          <Route path='/items/:id' component ={Item} /> </> 
+          <Route exact path='/items/:id' component ={Item} /> </> 
           :<>
           <Redirect to="/signin" /> </>
           }
