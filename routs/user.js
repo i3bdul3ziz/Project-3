@@ -21,13 +21,19 @@ router.post("/signup", (req, res) => {
           User.create(newUser).then(() => {
             console.log("newUers inside creatUser");
             res.json({ msg: "user created", userInf: newUser, register: true });
-          });
+          })
+          .catch(err => {
+            console.log(err)
+          })
         });
       } else {
         res.json({ msg: "email  used", register: false });
       }
     })
-    .catch((err) => res.json(err));
+    .catch((err) => {
+      console.log(err) 
+      res.json(err) 
+    }) ;
 });
 
 router.post("/signin", (req, res) => {
