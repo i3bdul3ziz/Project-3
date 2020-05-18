@@ -172,7 +172,7 @@ let CreateItem = (props) => {
             </Form>
           </Col>
           <Col md={4} id="marginLeft">
-            <div className="mt-5" style={{ height: "79%", width: "100%" }}>
+            <div className="mt-5" style={{ height: "79.5%", width: "100%" }}>
               <GoogleMapReact
                 bootstrapURLKeys={{
                   key: "AIzaSyCVCIuwNO1D5Qr2qyD3fWycf97sJcTyTx8",
