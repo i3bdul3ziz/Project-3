@@ -28,7 +28,7 @@ app.use("/api", authRoutes);
 if(process.env.NODE_ENV === "production"){
   app.use(express.static("project-three/build"));
   app.get("/*", (req, res) => {
-    res.sendFile(path.join(__dirname, "project-three", "build", "index.html"));
+    res.sendFile(path.join(__dirname, '/project-three/build/index.html'));
   });
   
 }
